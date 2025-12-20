@@ -1,0 +1,1958 @@
+{
+  "type": "FeatureCollection",
+  "name": "konya_roads",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_0",
+        "name": "Mevlana Caddesi",
+        "type": "primary",
+        "lanes": 2,
+        "speed_limit": 50
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.48,
+            37.87
+          ],
+          [
+            32.5,
+            37.87
+          ],
+          [
+            32.52,
+            37.87
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_1",
+        "name": "Alaaddin Bulvarı",
+        "type": "primary",
+        "lanes": 2,
+        "speed_limit": 50
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.49,
+            37.86
+          ],
+          [
+            32.49,
+            37.87
+          ],
+          [
+            32.49,
+            37.88
+          ],
+          [
+            32.49,
+            37.89
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_2",
+        "name": "Ankara Yolu",
+        "type": "trunk",
+        "lanes": 4,
+        "speed_limit": 70
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.44,
+            37.88
+          ],
+          [
+            32.48,
+            37.88
+          ],
+          [
+            32.52,
+            37.88
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_3",
+        "name": "Konya-Antalya Yolu",
+        "type": "trunk",
+        "lanes": 4,
+        "speed_limit": 70
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.46,
+            37.84
+          ],
+          [
+            32.48,
+            37.86
+          ],
+          [
+            32.5,
+            37.88
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_4",
+        "name": "Sokak 4",
+        "type": "tertiary",
+        "lanes": 2,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.494606652053825,
+            37.86856275120579
+          ],
+          [
+            32.49733638616862,
+            37.86996707147005
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_5",
+        "name": "Sokak 5",
+        "type": "secondary",
+        "lanes": 1,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.494638212752506,
+            37.87807189988205
+          ],
+          [
+            32.49480670044252,
+            37.88052189247946
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_6",
+        "name": "Sokak 6",
+        "type": "tertiary",
+        "lanes": 1,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.51347889381138,
+            37.87445226910091
+          ],
+          [
+            32.509763145715375,
+            37.87724514350301
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_7",
+        "name": "Sokak 7",
+        "type": "secondary",
+        "lanes": 2,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.50505825968562,
+            37.87301401133825
+          ],
+          [
+            32.51020590303189,
+            37.875589138843566
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_8",
+        "name": "Sokak 8",
+        "type": "tertiary",
+        "lanes": 2,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.507837195256414,
+            37.87338810159455
+          ],
+          [
+            32.50052069151391,
+            37.875730742780334
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_9",
+        "name": "Sokak 9",
+        "type": "tertiary",
+        "lanes": 2,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.50611426876663,
+            37.87883556495606
+          ],
+          [
+            32.49942071021844,
+            37.87544193471236
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_10",
+        "name": "Sokak 10",
+        "type": "secondary",
+        "lanes": 2,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.51303700034342,
+            37.880195460799435
+          ],
+          [
+            32.51039556170128,
+            37.8731287320791
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_11",
+        "name": "Sokak 11",
+        "type": "secondary",
+        "lanes": 2,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.49470261932616,
+            37.874282521924854
+          ],
+          [
+            32.49188324539703,
+            37.87895766459954
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_12",
+        "name": "Sokak 12",
+        "type": "residential",
+        "lanes": 1,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.49455698335608,
+            37.87814323156897
+          ],
+          [
+            32.489186665416476,
+            37.87929078820676
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_13",
+        "name": "Sokak 13",
+        "type": "tertiary",
+        "lanes": 1,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.510557116164996,
+            37.873478043041544
+          ],
+          [
+            32.50356271290276,
+            37.876320248584356
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_14",
+        "name": "Sokak 14",
+        "type": "tertiary",
+        "lanes": 1,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.500606144620704,
+            37.872430499595566
+          ],
+          [
+            32.505623072487815,
+            37.872488172321304
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_15",
+        "name": "Sokak 15",
+        "type": "secondary",
+        "lanes": 2,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.506321999755535,
+            37.86663950572227
+          ],
+          [
+            32.503241493293444,
+            37.869094663409214
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_16",
+        "name": "Sokak 16",
+        "type": "residential",
+        "lanes": 2,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.49555529012583,
+            37.87621280374841
+          ],
+          [
+            32.49956870191746,
+            37.876696539352324
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_17",
+        "name": "Sokak 17",
+        "type": "residential",
+        "lanes": 2,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.49955045040526,
+            37.88136690822848
+          ],
+          [
+            32.49456291262099,
+            37.88212219351013
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_18",
+        "name": "Sokak 18",
+        "type": "tertiary",
+        "lanes": 2,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.493197059563414,
+            37.86606878445589
+          ],
+          [
+            32.488810038165134,
+            37.87258099348953
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_19",
+        "name": "Sokak 19",
+        "type": "tertiary",
+        "lanes": 2,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.50486211272671,
+            37.86445784412545
+          ],
+          [
+            32.506918267365556,
+            37.86584873159318
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_20",
+        "name": "Sokak 20",
+        "type": "residential",
+        "lanes": 2,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.496458365661894,
+            37.86913017898761
+          ],
+          [
+            32.4940613127932,
+            37.864558867002664
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_21",
+        "name": "Sokak 21",
+        "type": "secondary",
+        "lanes": 2,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.50685228210913,
+            37.87615156757842
+          ],
+          [
+            32.511283500173796,
+            37.872404124796844
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_22",
+        "name": "Sokak 22",
+        "type": "residential",
+        "lanes": 1,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.49705243043545,
+            37.871026162918646
+          ],
+          [
+            32.492982282554706,
+            37.86932081907828
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_23",
+        "name": "Sokak 23",
+        "type": "tertiary",
+        "lanes": 2,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.48865175558005,
+            37.87816481883015
+          ],
+          [
+            32.48593880642577,
+            37.87859784811871
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_24",
+        "name": "Sokak 24",
+        "type": "residential",
+        "lanes": 2,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.48531176047936,
+            37.88214242701285
+          ],
+          [
+            32.48888795762993,
+            37.88619949747858
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_25",
+        "name": "Sokak 25",
+        "type": "tertiary",
+        "lanes": 2,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.48398760128686,
+            37.885146661766214
+          ],
+          [
+            32.48102464813673,
+            37.88885939025187
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_26",
+        "name": "Sokak 26",
+        "type": "secondary",
+        "lanes": 1,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.483141984730864,
+            37.88879866514513
+          ],
+          [
+            32.47859697221049,
+            37.889078209997535
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_27",
+        "name": "Sokak 27",
+        "type": "tertiary",
+        "lanes": 1,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.47158939744435,
+            37.882091313850445
+          ],
+          [
+            32.47140847478725,
+            37.87442758228441
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_28",
+        "name": "Sokak 28",
+        "type": "secondary",
+        "lanes": 2,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.46664303826669,
+            37.884640079909566
+          ],
+          [
+            32.47063387361633,
+            37.88274196383595
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_29",
+        "name": "Sokak 29",
+        "type": "tertiary",
+        "lanes": 2,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.47256725699903,
+            37.89105711480612
+          ],
+          [
+            32.47335897869154,
+            37.887136697168934
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_30",
+        "name": "Sokak 30",
+        "type": "secondary",
+        "lanes": 1,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.480412435657215,
+            37.874756752533294
+          ],
+          [
+            32.47777740266276,
+            37.87824317074903
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_31",
+        "name": "Sokak 31",
+        "type": "secondary",
+        "lanes": 2,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.46980109469236,
+            37.8894763395728
+          ],
+          [
+            32.472371894004134,
+            37.88445440288049
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_32",
+        "name": "Sokak 32",
+        "type": "tertiary",
+        "lanes": 1,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.471256178662735,
+            37.888952304497664
+          ],
+          [
+            32.46664958208292,
+            37.894648612182124
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_33",
+        "name": "Sokak 33",
+        "type": "secondary",
+        "lanes": 2,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.47610027928805,
+            37.87547390159341
+          ],
+          [
+            32.47735968700093,
+            37.870106318615555
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_34",
+        "name": "Sokak 34",
+        "type": "tertiary",
+        "lanes": 1,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.46125694242127,
+            37.83952982029624
+          ],
+          [
+            32.46234092508415,
+            37.83300845605503
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_35",
+        "name": "Sokak 35",
+        "type": "residential",
+        "lanes": 1,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.463665549614895,
+            37.839776394245945
+          ],
+          [
+            32.46370054640125,
+            37.84193572636389
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_36",
+        "name": "Sokak 36",
+        "type": "secondary",
+        "lanes": 1,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.4539136072268,
+            37.852649317795084
+          ],
+          [
+            32.45775428322246,
+            37.85745579000127
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_37",
+        "name": "Sokak 37",
+        "type": "residential",
+        "lanes": 2,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.45667964969931,
+            37.84374460981698
+          ],
+          [
+            32.449633624300915,
+            37.84339175420471
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_38",
+        "name": "Sokak 38",
+        "type": "residential",
+        "lanes": 2,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.46977753078235,
+            37.835630876361925
+          ],
+          [
+            32.46877900244108,
+            37.842403561014414
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_39",
+        "name": "Sokak 39",
+        "type": "secondary",
+        "lanes": 2,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.457557873981685,
+            37.852992261357144
+          ],
+          [
+            32.461588451127895,
+            37.85481603054648
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_40",
+        "name": "Sokak 40",
+        "type": "residential",
+        "lanes": 1,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.45537659737037,
+            37.846034030773495
+          ],
+          [
+            32.45020915596258,
+            37.84908635681072
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_41",
+        "name": "Sokak 41",
+        "type": "secondary",
+        "lanes": 2,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.469647744819184,
+            37.85062582171776
+          ],
+          [
+            32.474060851458646,
+            37.850578311281204
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_42",
+        "name": "Sokak 42",
+        "type": "secondary",
+        "lanes": 1,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.45945571714145,
+            37.85108515768322
+          ],
+          [
+            32.465821334999326,
+            37.8504695852966
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_43",
+        "name": "Sokak 43",
+        "type": "secondary",
+        "lanes": 1,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.46320170418798,
+            37.836430405587684
+          ],
+          [
+            32.466494547980766,
+            37.831868333376036
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_44",
+        "name": "Sokak 44",
+        "type": "secondary",
+        "lanes": 2,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.48016563214823,
+            37.8932453943754
+          ],
+          [
+            32.482335511194684,
+            37.893712047032956
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_45",
+        "name": "Sokak 45",
+        "type": "tertiary",
+        "lanes": 1,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.47210803405124,
+            37.902125482070694
+          ],
+          [
+            32.47750098482649,
+            37.905980048652566
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_46",
+        "name": "Sokak 46",
+        "type": "residential",
+        "lanes": 2,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.488089562483694,
+            37.89486186986402
+          ],
+          [
+            32.48539708866429,
+            37.89486385385779
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_47",
+        "name": "Sokak 47",
+        "type": "secondary",
+        "lanes": 1,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.488269762783666,
+            37.89695782931672
+          ],
+          [
+            32.482621846321756,
+            37.89997529039486
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_48",
+        "name": "Sokak 48",
+        "type": "tertiary",
+        "lanes": 1,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.47422683178183,
+            37.886738885000284
+          ],
+          [
+            32.47580904067007,
+            37.89018083470289
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_49",
+        "name": "Sokak 49",
+        "type": "secondary",
+        "lanes": 1,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.47829117647327,
+            37.884221227926474
+          ],
+          [
+            32.48592813266224,
+            37.88590913359931
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_50",
+        "name": "Sokak 50",
+        "type": "tertiary",
+        "lanes": 1,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.48315818634034,
+            37.882460538231314
+          ],
+          [
+            32.484607684081524,
+            37.880413891509136
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_51",
+        "name": "Sokak 51",
+        "type": "tertiary",
+        "lanes": 2,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.47317549292553,
+            37.89092602229935
+          ],
+          [
+            32.475383502624034,
+            37.890574077275616
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_52",
+        "name": "Sokak 52",
+        "type": "residential",
+        "lanes": 2,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.480430455910145,
+            37.898972168492094
+          ],
+          [
+            32.48060157305643,
+            37.90119265304756
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_53",
+        "name": "Sokak 53",
+        "type": "tertiary",
+        "lanes": 1,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.48014763003945,
+            37.88324443544008
+          ],
+          [
+            32.48471887209935,
+            37.88414633105729
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_54",
+        "name": "Sokak 54",
+        "type": "tertiary",
+        "lanes": 1,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.514821749129766,
+            37.85627351101038
+          ],
+          [
+            32.51198153319462,
+            37.856695477823294
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_55",
+        "name": "Sokak 55",
+        "type": "residential",
+        "lanes": 2,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.50808094707753,
+            37.844689664125205
+          ],
+          [
+            32.50591067452484,
+            37.84600409199376
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_56",
+        "name": "Sokak 56",
+        "type": "secondary",
+        "lanes": 1,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.505965318819996,
+            37.84910886130959
+          ],
+          [
+            32.501099368774646,
+            37.84310058294093
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_57",
+        "name": "Sokak 57",
+        "type": "tertiary",
+        "lanes": 2,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.51534287623998,
+            37.853971681825485
+          ],
+          [
+            32.51772496769382,
+            37.854351429218944
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_58",
+        "name": "Sokak 58",
+        "type": "secondary",
+        "lanes": 1,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.516126544963036,
+            37.84852155085614
+          ],
+          [
+            32.51787598839412,
+            37.847169581851
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_59",
+        "name": "Sokak 59",
+        "type": "residential",
+        "lanes": 2,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.51725953733765,
+            37.856376929707906
+          ],
+          [
+            32.517661432673506,
+            37.85974672673334
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_60",
+        "name": "Sokak 60",
+        "type": "secondary",
+        "lanes": 1,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.51894101810145,
+            37.860977575006835
+          ],
+          [
+            32.52038944797339,
+            37.85907569380306
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_61",
+        "name": "Sokak 61",
+        "type": "tertiary",
+        "lanes": 2,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.50581133113022,
+            37.84395725895367
+          ],
+          [
+            32.51322040666756,
+            37.8416741982744
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_62",
+        "name": "Sokak 62",
+        "type": "tertiary",
+        "lanes": 2,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.52182650040383,
+            37.85192349089431
+          ],
+          [
+            32.51891031975585,
+            37.851144738354044
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_63",
+        "name": "Sokak 63",
+        "type": "tertiary",
+        "lanes": 1,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.514474524038434,
+            37.86014577209339
+          ],
+          [
+            32.511889914283486,
+            37.86313418432666
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_64",
+        "name": "Sokak 64",
+        "type": "residential",
+        "lanes": 1,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.523063506349345,
+            37.875790451966
+          ],
+          [
+            32.51719348367737,
+            37.87904938901764
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_65",
+        "name": "Sokak 65",
+        "type": "residential",
+        "lanes": 2,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.52568710079085,
+            37.880971439685425
+          ],
+          [
+            32.527834962562665,
+            37.875224071249285
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_66",
+        "name": "Sokak 66",
+        "type": "secondary",
+        "lanes": 1,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.528532269429796,
+            37.879164829120796
+          ],
+          [
+            32.53060684536329,
+            37.881100701050094
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_67",
+        "name": "Sokak 67",
+        "type": "residential",
+        "lanes": 1,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.52830069332318,
+            37.87746052783923
+          ],
+          [
+            32.52388335781758,
+            37.873672230840086
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_68",
+        "name": "Sokak 68",
+        "type": "secondary",
+        "lanes": 2,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.52048251278107,
+            37.872436913918435
+          ],
+          [
+            32.52387799827276,
+            37.87152780001722
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_69",
+        "name": "Sokak 69",
+        "type": "residential",
+        "lanes": 1,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.52398721091195,
+            37.87377614636035
+          ],
+          [
+            32.52322056398059,
+            37.87099771917604
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_70",
+        "name": "Sokak 70",
+        "type": "tertiary",
+        "lanes": 1,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.52869871740617,
+            37.87845217012286
+          ],
+          [
+            32.53601228174163,
+            37.87684242264325
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_71",
+        "name": "Sokak 71",
+        "type": "secondary",
+        "lanes": 1,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.51423047653961,
+            37.87404314357836
+          ],
+          [
+            32.516424173071336,
+            37.877838806734005
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_72",
+        "name": "Sokak 72",
+        "type": "tertiary",
+        "lanes": 2,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.5220717276132,
+            37.8779384739723
+          ],
+          [
+            32.527956383064954,
+            37.87550602525983
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_73",
+        "name": "Sokak 73",
+        "type": "residential",
+        "lanes": 2,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.53286988543241,
+            37.87526889237131
+          ],
+          [
+            32.53348928314428,
+            37.86975014231988
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_74",
+        "name": "Sokak 74",
+        "type": "residential",
+        "lanes": 2,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.45540338170112,
+            37.860908311721204
+          ],
+          [
+            32.450550953750195,
+            37.86541921622332
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_75",
+        "name": "Sokak 75",
+        "type": "residential",
+        "lanes": 1,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.4537337730697,
+            37.8625269010628
+          ],
+          [
+            32.45511325904491,
+            37.864978200067384
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_76",
+        "name": "Sokak 76",
+        "type": "tertiary",
+        "lanes": 1,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.45480327850758,
+            37.86223497878983
+          ],
+          [
+            32.44747010430263,
+            37.86006012341992
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_77",
+        "name": "Sokak 77",
+        "type": "secondary",
+        "lanes": 2,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.455553501381125,
+            37.86740159208107
+          ],
+          [
+            32.46227459935715,
+            37.87019094618707
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_78",
+        "name": "Sokak 78",
+        "type": "secondary",
+        "lanes": 1,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.46071049276667,
+            37.870566740033226
+          ],
+          [
+            32.45675326757727,
+            37.87003779713021
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_79",
+        "name": "Sokak 79",
+        "type": "residential",
+        "lanes": 2,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.46091254916505,
+            37.87043423397451
+          ],
+          [
+            32.462024560925975,
+            37.877219451702516
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_80",
+        "name": "Sokak 80",
+        "type": "residential",
+        "lanes": 1,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.461814289881126,
+            37.8678894368094
+          ],
+          [
+            32.46910805335981,
+            37.86657386216773
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_81",
+        "name": "Sokak 81",
+        "type": "residential",
+        "lanes": 1,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.450110021845475,
+            37.85808292715817
+          ],
+          [
+            32.454545630756996,
+            37.85495109805226
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_82",
+        "name": "Sokak 82",
+        "type": "secondary",
+        "lanes": 1,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.45818832593718,
+            37.866541591843244
+          ],
+          [
+            32.451301475199514,
+            37.8638353012471
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "road_83",
+        "name": "Sokak 83",
+        "type": "secondary",
+        "lanes": 1,
+        "speed_limit": 30
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            32.46445185159233,
+            37.86373952048458
+          ],
+          [
+            32.47017141622148,
+            37.86763103912123
+          ]
+        ]
+      }
+    }
+  ]
+}

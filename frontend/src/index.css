@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@layer theme {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+  }
+}
+
+/* Custom base styles need to use @layer base or just plain CSS processed by TW */
+body {
+  /* @apply is supported in v4 but @theme variables are preferred */
+  background-color: var(--color-gray-50);
+  color: var(--color-gray-900);
+}

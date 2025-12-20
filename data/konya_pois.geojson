@@ -1,0 +1,4876 @@
+{
+  "type": "FeatureCollection",
+  "name": "konya_pois",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mevlana_muzesi",
+        "name": "Mevlana Müzesi",
+        "category": "tourism",
+        "is_landmark": true,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.5044,
+          37.8707
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "alaaddin_tepesi",
+        "name": "Alaaddin Tepesi",
+        "category": "park",
+        "is_landmark": true,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.4891,
+          37.8746
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "karatay_medresesi",
+        "name": "Karatay Medresesi",
+        "category": "tourism",
+        "is_landmark": true,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.4985,
+          37.8732
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "selcuklu_belediyesi",
+        "name": "Selçuklu Belediyesi",
+        "category": "government",
+        "is_landmark": true,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.4756,
+          37.8812
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "konya_garı",
+        "name": "Konya Garı",
+        "category": "transport",
+        "is_landmark": true,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.4847,
+          37.8698
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "meram_bagları",
+        "name": "Meram Bağları",
+        "category": "nature",
+        "is_landmark": true,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.4623,
+          37.8456
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "kentpark",
+        "name": "Kent Park",
+        "category": "park",
+        "is_landmark": true,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.4534,
+          37.8889
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "selcuk_universitesi",
+        "name": "Selçuk Üniversitesi",
+        "category": "education",
+        "is_landmark": true,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.4156,
+          37.8634
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_0",
+        "name": "Üniversite - Mevlana",
+        "category": "education",
+        "mahalle": "Mevlana",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.5016259310491,
+          37.86449183354669
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_1",
+        "name": "Okul - Mevlana",
+        "category": "education",
+        "mahalle": "Mevlana",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.50540037317296,
+          37.873976769521164
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_2",
+        "name": "Kütüphane - Mevlana",
+        "category": "education",
+        "mahalle": "Mevlana",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.511952742055406,
+          37.87024461203946
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_3",
+        "name": "Kütüphane - Mevlana",
+        "category": "education",
+        "mahalle": "Mevlana",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.499679841620264,
+          37.876274915836085
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_4",
+        "name": "Okul - Mevlana",
+        "category": "education",
+        "mahalle": "Mevlana",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.507593641360074,
+          37.86650855553131
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_5",
+        "name": "Okul - Mevlana",
+        "category": "education",
+        "mahalle": "Mevlana",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.518582510200794,
+          37.869192284273446
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_6",
+        "name": "Hastane - Mevlana",
+        "category": "health",
+        "mahalle": "Mevlana",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.50470776636873,
+          37.87543209988835
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_7",
+        "name": "Eczane - Mevlana",
+        "category": "health",
+        "mahalle": "Mevlana",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.50959344492022,
+          37.86873382399154
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_8",
+        "name": "Klinik - Mevlana",
+        "category": "health",
+        "mahalle": "Mevlana",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.497645122118506,
+          37.86380660998934
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_9",
+        "name": "Sağlık Ocağı - Mevlana",
+        "category": "health",
+        "mahalle": "Mevlana",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.505744856839826,
+          37.86972832190716
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_10",
+        "name": "Klinik - Mevlana",
+        "category": "health",
+        "mahalle": "Mevlana",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.50715922841386,
+          37.87793792338821
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_11",
+        "name": "Hastane - Mevlana",
+        "category": "health",
+        "mahalle": "Mevlana",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.49606127970984,
+          37.86385075594086
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_12",
+        "name": "Eczane - Mevlana",
+        "category": "health",
+        "mahalle": "Mevlana",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.51235487874743,
+          37.86370816840842
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_13",
+        "name": "Klinik - Mevlana",
+        "category": "health",
+        "mahalle": "Mevlana",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.51507271377677,
+          37.85723444175536
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_14",
+        "name": "AVM - Mevlana",
+        "category": "commerce",
+        "mahalle": "Mevlana",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.50859219138899,
+          37.873239080650706
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_15",
+        "name": "AVM - Mevlana",
+        "category": "commerce",
+        "mahalle": "Mevlana",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.50656858517391,
+          37.86779945090897
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_16",
+        "name": "AVM - Mevlana",
+        "category": "commerce",
+        "mahalle": "Mevlana",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.51029802656745,
+          37.87013412292564
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_17",
+        "name": "Mağaza - Mevlana",
+        "category": "commerce",
+        "mahalle": "Mevlana",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.50528647743169,
+          37.868444767440614
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_18",
+        "name": "AVM - Mevlana",
+        "category": "commerce",
+        "mahalle": "Mevlana",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.50828515377524,
+          37.867483702920694
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_19",
+        "name": "Mağaza - Mevlana",
+        "category": "commerce",
+        "mahalle": "Mevlana",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.507553509898166,
+          37.8776054466022
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_20",
+        "name": "Mağaza - Mevlana",
+        "category": "commerce",
+        "mahalle": "Mevlana",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.51656284369293,
+          37.87537057533576
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_21",
+        "name": "Türbe - Mevlana",
+        "category": "religion",
+        "mahalle": "Mevlana",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.513154348705804,
+          37.86018015386446
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_22",
+        "name": "Türbe - Mevlana",
+        "category": "religion",
+        "mahalle": "Mevlana",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.49993858962623,
+          37.86900343812532
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_23",
+        "name": "Türbe - Mevlana",
+        "category": "religion",
+        "mahalle": "Mevlana",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.51415402160191,
+          37.86929348964941
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_24",
+        "name": "Türbe - Mevlana",
+        "category": "religion",
+        "mahalle": "Mevlana",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.50637609090119,
+          37.861176731972314
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_25",
+        "name": "Otopark - Mevlana",
+        "category": "transport",
+        "mahalle": "Mevlana",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.4950045671355,
+          37.86281156548646
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_26",
+        "name": "Otobüs Durağı - Mevlana",
+        "category": "transport",
+        "mahalle": "Mevlana",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.51643578430346,
+          37.877404794573636
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_27",
+        "name": "Otobüs Durağı - Mevlana",
+        "category": "transport",
+        "mahalle": "Mevlana",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.51403036503478,
+          37.86766086924275
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_28",
+        "name": "Tramvay Durağı - Mevlana",
+        "category": "transport",
+        "mahalle": "Mevlana",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.50873783720816,
+          37.86348825243277
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_29",
+        "name": "Otopark - Mevlana",
+        "category": "transport",
+        "mahalle": "Mevlana",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.49753986753011,
+          37.86815082398613
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_30",
+        "name": "Otopark - Mevlana",
+        "category": "transport",
+        "mahalle": "Mevlana",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.49897847317802,
+          37.874785011888044
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_31",
+        "name": "Park - Mevlana",
+        "category": "recreation",
+        "mahalle": "Mevlana",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.494262071511756,
+          37.86668281302754
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_32",
+        "name": "Restoran - Mevlana",
+        "category": "recreation",
+        "mahalle": "Mevlana",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.49881596966553,
+          37.88034057260821
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_33",
+        "name": "Kaymakamlık - Mevlana",
+        "category": "government",
+        "mahalle": "Mevlana",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.496409465339696,
+          37.86117040831486
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_34",
+        "name": "Nüfus Müdürlüğü - Mevlana",
+        "category": "government",
+        "mahalle": "Mevlana",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.49985128629715,
+          37.87158329335892
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_35",
+        "name": "Kaymakamlık - Mevlana",
+        "category": "government",
+        "mahalle": "Mevlana",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.499738327738605,
+          37.8703773700565
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_36",
+        "name": "Nüfus Müdürlüğü - Mevlana",
+        "category": "government",
+        "mahalle": "Mevlana",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.49414777161473,
+          37.88600674666992
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_37",
+        "name": "Nüfus Müdürlüğü - Mevlana",
+        "category": "government",
+        "mahalle": "Mevlana",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.50226256573781,
+          37.87174280511769
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_38",
+        "name": "PTT - Mevlana",
+        "category": "government",
+        "mahalle": "Mevlana",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.50831431798708,
+          37.87966955847569
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_39",
+        "name": "Kreş - Karatay",
+        "category": "education",
+        "mahalle": "Karatay",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.49810399734881,
+          37.8739247262736
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_40",
+        "name": "Kütüphane - Karatay",
+        "category": "education",
+        "mahalle": "Karatay",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.493104048581095,
+          37.86795402928398
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_41",
+        "name": "Kreş - Karatay",
+        "category": "education",
+        "mahalle": "Karatay",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.496412400413305,
+          37.87777283108816
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_42",
+        "name": "Klinik - Karatay",
+        "category": "health",
+        "mahalle": "Karatay",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.49745580891368,
+          37.88381131840422
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_43",
+        "name": "Eczane - Karatay",
+        "category": "health",
+        "mahalle": "Karatay",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.503539142249274,
+          37.88044099883391
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_44",
+        "name": "Hastane - Karatay",
+        "category": "health",
+        "mahalle": "Karatay",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.502667882930915,
+          37.876327992985054
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_45",
+        "name": "Market - Karatay",
+        "category": "commerce",
+        "mahalle": "Karatay",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.493484554203654,
+          37.87072026856621
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_46",
+        "name": "Pazar - Karatay",
+        "category": "commerce",
+        "mahalle": "Karatay",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.49712087870167,
+          37.873974555448875
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_47",
+        "name": "Market - Karatay",
+        "category": "commerce",
+        "mahalle": "Karatay",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.492643247451454,
+          37.87019610340476
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_48",
+        "name": "Mağaza - Karatay",
+        "category": "commerce",
+        "mahalle": "Karatay",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.49727705948317,
+          37.871651452651314
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_49",
+        "name": "Market - Karatay",
+        "category": "commerce",
+        "mahalle": "Karatay",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.50067030559584,
+          37.870648673123156
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_50",
+        "name": "AVM - Karatay",
+        "category": "commerce",
+        "mahalle": "Karatay",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.50131162837336,
+          37.87598809815418
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_51",
+        "name": "Türbe - Karatay",
+        "category": "religion",
+        "mahalle": "Karatay",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.49499540773569,
+          37.876460022567606
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_52",
+        "name": "Cami - Karatay",
+        "category": "religion",
+        "mahalle": "Karatay",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.505571971747955,
+          37.872211400634484
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_53",
+        "name": "Türbe - Karatay",
+        "category": "religion",
+        "mahalle": "Karatay",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.499728772052656,
+          37.868762901001304
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_54",
+        "name": "Otobüs Durağı - Karatay",
+        "category": "transport",
+        "mahalle": "Karatay",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.50358836090306,
+          37.87333966923301
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_55",
+        "name": "Tramvay Durağı - Karatay",
+        "category": "transport",
+        "mahalle": "Karatay",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.49906395506387,
+          37.883033875260594
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_56",
+        "name": "Spor Salonu - Karatay",
+        "category": "recreation",
+        "mahalle": "Karatay",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.50304016967136,
+          37.87146340474696
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_57",
+        "name": "Restoran - Karatay",
+        "category": "recreation",
+        "mahalle": "Karatay",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.50116929889395,
+          37.88312374723933
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_58",
+        "name": "Kafe - Karatay",
+        "category": "recreation",
+        "mahalle": "Karatay",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.503668164596995,
+          37.87913173794342
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_59",
+        "name": "Spor Salonu - Karatay",
+        "category": "recreation",
+        "mahalle": "Karatay",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.49499669334908,
+          37.87166598860344
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_60",
+        "name": "Restoran - Karatay",
+        "category": "recreation",
+        "mahalle": "Karatay",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.50219806511245,
+          37.868664261259006
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_61",
+        "name": "Spor Salonu - Karatay",
+        "category": "recreation",
+        "mahalle": "Karatay",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.49552094561331,
+          37.86797539095191
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_62",
+        "name": "PTT - Karatay",
+        "category": "government",
+        "mahalle": "Karatay",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.50704141209861,
+          37.86137257015037
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_63",
+        "name": "Belediye - Karatay",
+        "category": "government",
+        "mahalle": "Karatay",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.49818311849711,
+          37.87938196672941
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_64",
+        "name": "Nüfus Müdürlüğü - Karatay",
+        "category": "government",
+        "mahalle": "Karatay",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.48127940846216,
+          37.86669972477474
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_65",
+        "name": "Nüfus Müdürlüğü - Karatay",
+        "category": "government",
+        "mahalle": "Karatay",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.500603658369,
+          37.88199268931155
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_66",
+        "name": "Belediye - Karatay",
+        "category": "government",
+        "mahalle": "Karatay",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.49103957250152,
+          37.87241786523391
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_67",
+        "name": "Kaymakamlık - Karatay",
+        "category": "government",
+        "mahalle": "Karatay",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.50654883974574,
+          37.8769939591633
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_68",
+        "name": "Nüfus Müdürlüğü - Karatay",
+        "category": "government",
+        "mahalle": "Karatay",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.49811094978134,
+          37.871224948507546
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_69",
+        "name": "Okul - Selçuklu",
+        "category": "education",
+        "mahalle": "Selçuklu",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.47627689619504,
+          37.88193911957181
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_70",
+        "name": "Kütüphane - Selçuklu",
+        "category": "education",
+        "mahalle": "Selçuklu",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.47815382165804,
+          37.89058446494128
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_71",
+        "name": "Kütüphane - Selçuklu",
+        "category": "education",
+        "mahalle": "Selçuklu",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.47843448970318,
+          37.87247737441037
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_72",
+        "name": "Eczane - Selçuklu",
+        "category": "health",
+        "mahalle": "Selçuklu",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.48164399364538,
+          37.88338394523238
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_73",
+        "name": "Klinik - Selçuklu",
+        "category": "health",
+        "mahalle": "Selçuklu",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.480094914230776,
+          37.874458480046485
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_74",
+        "name": "Klinik - Selçuklu",
+        "category": "health",
+        "mahalle": "Selçuklu",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.46816409607811,
+          37.88901737262759
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_75",
+        "name": "Eczane - Selçuklu",
+        "category": "health",
+        "mahalle": "Selçuklu",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.47322058386435,
+          37.88656059403918
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_76",
+        "name": "Eczane - Selçuklu",
+        "category": "health",
+        "mahalle": "Selçuklu",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.47360975163484,
+          37.89187762109815
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_77",
+        "name": "Sağlık Ocağı - Selçuklu",
+        "category": "health",
+        "mahalle": "Selçuklu",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.47882950698008,
+          37.879470264086436
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_78",
+        "name": "Klinik - Selçuklu",
+        "category": "health",
+        "mahalle": "Selçuklu",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.478642278569424,
+          37.87894340641471
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_79",
+        "name": "AVM - Selçuklu",
+        "category": "commerce",
+        "mahalle": "Selçuklu",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.48016656210421,
+          37.885809061263934
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_80",
+        "name": "Mağaza - Selçuklu",
+        "category": "commerce",
+        "mahalle": "Selçuklu",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.46988505583431,
+          37.88602457335826
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_81",
+        "name": "Mağaza - Selçuklu",
+        "category": "commerce",
+        "mahalle": "Selçuklu",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.46828773849903,
+          37.88378241571665
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_82",
+        "name": "AVM - Selçuklu",
+        "category": "commerce",
+        "mahalle": "Selçuklu",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.48464031478255,
+          37.878720569674705
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_83",
+        "name": "Pazar - Selçuklu",
+        "category": "commerce",
+        "mahalle": "Selçuklu",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.47656526503002,
+          37.87887693567839
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_84",
+        "name": "Mağaza - Selçuklu",
+        "category": "commerce",
+        "mahalle": "Selçuklu",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.46568744799817,
+          37.876213765845
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_85",
+        "name": "AVM - Selçuklu",
+        "category": "commerce",
+        "mahalle": "Selçuklu",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.47422689738961,
+          37.881435742925845
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_86",
+        "name": "Cami - Selçuklu",
+        "category": "religion",
+        "mahalle": "Selçuklu",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.48214214146511,
+          37.871484773012185
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_87",
+        "name": "Cami - Selçuklu",
+        "category": "religion",
+        "mahalle": "Selçuklu",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.47837858438735,
+          37.89150271753507
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_88",
+        "name": "Cami - Selçuklu",
+        "category": "religion",
+        "mahalle": "Selçuklu",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.475109861476874,
+          37.879638928633426
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_89",
+        "name": "Cami - Selçuklu",
+        "category": "religion",
+        "mahalle": "Selçuklu",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.483107694268945,
+          37.877358653219204
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_90",
+        "name": "Otopark - Selçuklu",
+        "category": "transport",
+        "mahalle": "Selçuklu",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.47869919066836,
+          37.88564222109003
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_91",
+        "name": "Otopark - Selçuklu",
+        "category": "transport",
+        "mahalle": "Selçuklu",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.47732772001913,
+          37.88487924207642
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_92",
+        "name": "Tramvay Durağı - Selçuklu",
+        "category": "transport",
+        "mahalle": "Selçuklu",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.47392132698033,
+          37.88275613101874
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_93",
+        "name": "Taksi Durağı - Selçuklu",
+        "category": "transport",
+        "mahalle": "Selçuklu",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.4668191078123,
+          37.88044531334084
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_94",
+        "name": "Taksi Durağı - Selçuklu",
+        "category": "transport",
+        "mahalle": "Selçuklu",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.47594260900372,
+          37.890297823755155
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_95",
+        "name": "Taksi Durağı - Selçuklu",
+        "category": "transport",
+        "mahalle": "Selçuklu",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.47670826638261,
+          37.88582688050979
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_96",
+        "name": "Taksi Durağı - Selçuklu",
+        "category": "transport",
+        "mahalle": "Selçuklu",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.47324298831608,
+          37.87735516962736
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_97",
+        "name": "Restoran - Selçuklu",
+        "category": "recreation",
+        "mahalle": "Selçuklu",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.484766643073534,
+          37.874613046481706
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_98",
+        "name": "Spor Salonu - Selçuklu",
+        "category": "recreation",
+        "mahalle": "Selçuklu",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.48053843414587,
+          37.877159462063815
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_99",
+        "name": "Nüfus Müdürlüğü - Selçuklu",
+        "category": "government",
+        "mahalle": "Selçuklu",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.47843241202014,
+          37.88226837066691
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_100",
+        "name": "Kaymakamlık - Selçuklu",
+        "category": "government",
+        "mahalle": "Selçuklu",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.4792909576001,
+          37.88044379481977
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_101",
+        "name": "PTT - Selçuklu",
+        "category": "government",
+        "mahalle": "Selçuklu",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.474617060779835,
+          37.87919982810805
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_102",
+        "name": "PTT - Selçuklu",
+        "category": "government",
+        "mahalle": "Selçuklu",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.48319648480427,
+          37.880712916395844
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_103",
+        "name": "Belediye - Selçuklu",
+        "category": "government",
+        "mahalle": "Selçuklu",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.4793951006977,
+          37.884069056869386
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_104",
+        "name": "Belediye - Selçuklu",
+        "category": "government",
+        "mahalle": "Selçuklu",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.4710435246071,
+          37.89118980131363
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_105",
+        "name": "Nüfus Müdürlüğü - Selçuklu",
+        "category": "government",
+        "mahalle": "Selçuklu",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.48333855200716,
+          37.88144230166085
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_106",
+        "name": "PTT - Selçuklu",
+        "category": "government",
+        "mahalle": "Selçuklu",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.46954722950093,
+          37.87097879252774
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_107",
+        "name": "Kütüphane - Meram",
+        "category": "education",
+        "mahalle": "Meram",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.454702033919254,
+          37.850037747028836
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_108",
+        "name": "Üniversite - Meram",
+        "category": "education",
+        "mahalle": "Meram",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.46041980895861,
+          37.85193339023736
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_109",
+        "name": "Dershane - Meram",
+        "category": "education",
+        "mahalle": "Meram",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.46979373134548,
+          37.8385387695632
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_110",
+        "name": "Dershane - Meram",
+        "category": "education",
+        "mahalle": "Meram",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.45515810018562,
+          37.83690137958543
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_111",
+        "name": "Okul - Meram",
+        "category": "education",
+        "mahalle": "Meram",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.46286919759837,
+          37.84850445232537
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_112",
+        "name": "Okul - Meram",
+        "category": "education",
+        "mahalle": "Meram",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.46880007789877,
+          37.84687750226305
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_113",
+        "name": "Dershane - Meram",
+        "category": "education",
+        "mahalle": "Meram",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.461351646529465,
+          37.85026175253282
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_114",
+        "name": "Dershane - Meram",
+        "category": "education",
+        "mahalle": "Meram",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.45010113700041,
+          37.84729067651378
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_115",
+        "name": "Sağlık Ocağı - Meram",
+        "category": "health",
+        "mahalle": "Meram",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.4606981584453,
+          37.84952942677362
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_116",
+        "name": "Hastane - Meram",
+        "category": "health",
+        "mahalle": "Meram",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.46560184313495,
+          37.844285226474774
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_117",
+        "name": "Hastane - Meram",
+        "category": "health",
+        "mahalle": "Meram",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.46370962214119,
+          37.84798332785961
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_118",
+        "name": "Klinik - Meram",
+        "category": "health",
+        "mahalle": "Meram",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.46661138283834,
+          37.852431633824246
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_119",
+        "name": "Hastane - Meram",
+        "category": "health",
+        "mahalle": "Meram",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.46207687685125,
+          37.85021478234917
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_120",
+        "name": "Mağaza - Meram",
+        "category": "commerce",
+        "mahalle": "Meram",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.463943401127736,
+          37.85390815534748
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_121",
+        "name": "Market - Meram",
+        "category": "commerce",
+        "mahalle": "Meram",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.456287960043966,
+          37.833487447458005
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_122",
+        "name": "Pazar - Meram",
+        "category": "commerce",
+        "mahalle": "Meram",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.458844659118284,
+          37.851684215409264
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_123",
+        "name": "AVM - Meram",
+        "category": "commerce",
+        "mahalle": "Meram",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.44609525319994,
+          37.855195814396865
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_124",
+        "name": "AVM - Meram",
+        "category": "commerce",
+        "mahalle": "Meram",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.46114478982004,
+          37.83859694110461
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_125",
+        "name": "Türbe - Meram",
+        "category": "religion",
+        "mahalle": "Meram",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.46114473475766,
+          37.83826870795876
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_126",
+        "name": "Cami - Meram",
+        "category": "religion",
+        "mahalle": "Meram",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.458829196065835,
+          37.85627151915958
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_127",
+        "name": "Cami - Meram",
+        "category": "religion",
+        "mahalle": "Meram",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.459069395749076,
+          37.84901517928398
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_128",
+        "name": "Cami - Meram",
+        "category": "religion",
+        "mahalle": "Meram",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.46358994013906,
+          37.8507675339044
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_129",
+        "name": "Cami - Meram",
+        "category": "religion",
+        "mahalle": "Meram",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.45116817659315,
+          37.850482051585956
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_130",
+        "name": "Cami - Meram",
+        "category": "religion",
+        "mahalle": "Meram",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.45525991528664,
+          37.844151003353566
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_131",
+        "name": "Otopark - Meram",
+        "category": "transport",
+        "mahalle": "Meram",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.46212211576066,
+          37.8495593952965
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_132",
+        "name": "Otopark - Meram",
+        "category": "transport",
+        "mahalle": "Meram",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.46043191031082,
+          37.844101670018034
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_133",
+        "name": "Spor Salonu - Meram",
+        "category": "recreation",
+        "mahalle": "Meram",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.46313255774211,
+          37.855029462072324
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_134",
+        "name": "Restoran - Meram",
+        "category": "recreation",
+        "mahalle": "Meram",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.45419065902909,
+          37.83427591019317
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_135",
+        "name": "Kafe - Meram",
+        "category": "recreation",
+        "mahalle": "Meram",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.456442533656045,
+          37.851384785019995
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_136",
+        "name": "Restoran - Meram",
+        "category": "recreation",
+        "mahalle": "Meram",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.46856070154087,
+          37.836377678878314
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_137",
+        "name": "Park - Meram",
+        "category": "recreation",
+        "mahalle": "Meram",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.4648901215467,
+          37.84157114957125
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_138",
+        "name": "PTT - Meram",
+        "category": "government",
+        "mahalle": "Meram",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.46160265614233,
+          37.85419654537744
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_139",
+        "name": "Belediye - Meram",
+        "category": "government",
+        "mahalle": "Meram",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.45869168004115,
+          37.83711683262621
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_140",
+        "name": "PTT - Meram",
+        "category": "government",
+        "mahalle": "Meram",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.46337884788252,
+          37.84158153240793
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_141",
+        "name": "Nüfus Müdürlüğü - Meram",
+        "category": "government",
+        "mahalle": "Meram",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.46707765982301,
+          37.842294636067
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_142",
+        "name": "PTT - Meram",
+        "category": "government",
+        "mahalle": "Meram",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.47159959284367,
+          37.83578680494353
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_143",
+        "name": "Kütüphane - Bosna Hersek",
+        "category": "education",
+        "mahalle": "Bosna Hersek",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.47935510376612,
+          37.883503693215545
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_144",
+        "name": "Kütüphane - Bosna Hersek",
+        "category": "education",
+        "mahalle": "Bosna Hersek",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.474566533687685,
+          37.885165243583025
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_145",
+        "name": "Kütüphane - Bosna Hersek",
+        "category": "education",
+        "mahalle": "Bosna Hersek",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.48624279611448,
+          37.88773574413426
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_146",
+        "name": "Kreş - Bosna Hersek",
+        "category": "education",
+        "mahalle": "Bosna Hersek",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.49192458944968,
+          37.88997324214606
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_147",
+        "name": "Kreş - Bosna Hersek",
+        "category": "education",
+        "mahalle": "Bosna Hersek",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.492062393255594,
+          37.90071389439931
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_148",
+        "name": "Kütüphane - Bosna Hersek",
+        "category": "education",
+        "mahalle": "Bosna Hersek",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.48782817977824,
+          37.88287602937542
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_149",
+        "name": "Sağlık Ocağı - Bosna Hersek",
+        "category": "health",
+        "mahalle": "Bosna Hersek",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.480956648245005,
+          37.893096929423024
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_150",
+        "name": "Sağlık Ocağı - Bosna Hersek",
+        "category": "health",
+        "mahalle": "Bosna Hersek",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.483136621990646,
+          37.89776043937224
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_151",
+        "name": "AVM - Bosna Hersek",
+        "category": "commerce",
+        "mahalle": "Bosna Hersek",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.48008025362409,
+          37.90744493202457
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_152",
+        "name": "Mağaza - Bosna Hersek",
+        "category": "commerce",
+        "mahalle": "Bosna Hersek",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.4777168343484,
+          37.896112264320195
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_153",
+        "name": "Mağaza - Bosna Hersek",
+        "category": "commerce",
+        "mahalle": "Bosna Hersek",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.49379157899276,
+          37.88527890849059
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_154",
+        "name": "Market - Bosna Hersek",
+        "category": "commerce",
+        "mahalle": "Bosna Hersek",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.48537523391889,
+          37.89672003506464
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_155",
+        "name": "AVM - Bosna Hersek",
+        "category": "commerce",
+        "mahalle": "Bosna Hersek",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.466878110856335,
+          37.88534984083526
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_156",
+        "name": "Market - Bosna Hersek",
+        "category": "commerce",
+        "mahalle": "Bosna Hersek",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.48527952530731,
+          37.88233934224432
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_157",
+        "name": "Market - Bosna Hersek",
+        "category": "commerce",
+        "mahalle": "Bosna Hersek",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.48573284748355,
+          37.89704317122371
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_158",
+        "name": "Mağaza - Bosna Hersek",
+        "category": "commerce",
+        "mahalle": "Bosna Hersek",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.49105614104066,
+          37.891550980857915
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_159",
+        "name": "Cami - Bosna Hersek",
+        "category": "religion",
+        "mahalle": "Bosna Hersek",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.48697879063806,
+          37.8911850483855
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_160",
+        "name": "Türbe - Bosna Hersek",
+        "category": "religion",
+        "mahalle": "Bosna Hersek",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.50258385176051,
+          37.87602373288721
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_161",
+        "name": "Türbe - Bosna Hersek",
+        "category": "religion",
+        "mahalle": "Bosna Hersek",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.47268400360355,
+          37.89005186047197
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_162",
+        "name": "Türbe - Bosna Hersek",
+        "category": "religion",
+        "mahalle": "Bosna Hersek",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.48432194853072,
+          37.88921112854061
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_163",
+        "name": "Otobüs Durağı - Bosna Hersek",
+        "category": "transport",
+        "mahalle": "Bosna Hersek",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.48509610664021,
+          37.90030381226954
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_164",
+        "name": "Otobüs Durağı - Bosna Hersek",
+        "category": "transport",
+        "mahalle": "Bosna Hersek",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.48118903540779,
+          37.89550746885565
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_165",
+        "name": "Park - Bosna Hersek",
+        "category": "recreation",
+        "mahalle": "Bosna Hersek",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.49269286971167,
+          37.90069418110398
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_166",
+        "name": "Spor Salonu - Bosna Hersek",
+        "category": "recreation",
+        "mahalle": "Bosna Hersek",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.47653204117224,
+          37.89257779865674
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_167",
+        "name": "Belediye - Bosna Hersek",
+        "category": "government",
+        "mahalle": "Bosna Hersek",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.482064732404154,
+          37.8866529930675
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_168",
+        "name": "Belediye - Bosna Hersek",
+        "category": "government",
+        "mahalle": "Bosna Hersek",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.48351815008982,
+          37.89339229661751
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_169",
+        "name": "Kaymakamlık - Bosna Hersek",
+        "category": "government",
+        "mahalle": "Bosna Hersek",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.47856930285506,
+          37.88953838826799
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_170",
+        "name": "Nüfus Müdürlüğü - Bosna Hersek",
+        "category": "government",
+        "mahalle": "Bosna Hersek",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.4833023803299,
+          37.8855301187198
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_171",
+        "name": "Kaymakamlık - Bosna Hersek",
+        "category": "government",
+        "mahalle": "Bosna Hersek",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.47724040925123,
+          37.88661709829142
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_172",
+        "name": "Kütüphane - Yazır",
+        "category": "education",
+        "mahalle": "Yazır",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.515670976292725,
+          37.8573723230077
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_173",
+        "name": "Okul - Yazır",
+        "category": "education",
+        "mahalle": "Yazır",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.51458602969733,
+          37.844594852742176
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_174",
+        "name": "Kreş - Yazır",
+        "category": "education",
+        "mahalle": "Yazır",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.5085835621911,
+          37.85058333938358
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_175",
+        "name": "Üniversite - Yazır",
+        "category": "education",
+        "mahalle": "Yazır",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.50917647953555,
+          37.85212332729832
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_176",
+        "name": "Kütüphane - Yazır",
+        "category": "education",
+        "mahalle": "Yazır",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.52139082054355,
+          37.8630836428472
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_177",
+        "name": "Kreş - Yazır",
+        "category": "education",
+        "mahalle": "Yazır",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.51609630974066,
+          37.850266159228624
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_178",
+        "name": "Okul - Yazır",
+        "category": "education",
+        "mahalle": "Yazır",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.52003942971767,
+          37.85085150174966
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_179",
+        "name": "Eczane - Yazır",
+        "category": "health",
+        "mahalle": "Yazır",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.50557427976353,
+          37.841810802077084
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_180",
+        "name": "Klinik - Yazır",
+        "category": "health",
+        "mahalle": "Yazır",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.51313486336049,
+          37.854649847783435
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_181",
+        "name": "Sağlık Ocağı - Yazır",
+        "category": "health",
+        "mahalle": "Yazır",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.516739510746284,
+          37.870183741179105
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_182",
+        "name": "Mağaza - Yazır",
+        "category": "commerce",
+        "mahalle": "Yazır",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.51024080132405,
+          37.84631369021233
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_183",
+        "name": "Mağaza - Yazır",
+        "category": "commerce",
+        "mahalle": "Yazır",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.518602017321406,
+          37.85196073149379
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_184",
+        "name": "Türbe - Yazır",
+        "category": "religion",
+        "mahalle": "Yazır",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.51034466458923,
+          37.85436014890933
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_185",
+        "name": "Türbe - Yazır",
+        "category": "religion",
+        "mahalle": "Yazır",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.51757687452948,
+          37.86061672136676
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_186",
+        "name": "Otopark - Yazır",
+        "category": "transport",
+        "mahalle": "Yazır",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.51085680868253,
+          37.85437983072292
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_187",
+        "name": "Tramvay Durağı - Yazır",
+        "category": "transport",
+        "mahalle": "Yazır",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.50596329209817,
+          37.85519868432381
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_188",
+        "name": "Taksi Durağı - Yazır",
+        "category": "transport",
+        "mahalle": "Yazır",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.503511464559175,
+          37.85749279409486
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_189",
+        "name": "Spor Salonu - Yazır",
+        "category": "recreation",
+        "mahalle": "Yazır",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.51463321527797,
+          37.86295870104588
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_190",
+        "name": "Park - Yazır",
+        "category": "recreation",
+        "mahalle": "Yazır",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.512039913423415,
+          37.85326478222122
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_191",
+        "name": "Restoran - Yazır",
+        "category": "recreation",
+        "mahalle": "Yazır",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.50463942626574,
+          37.85686529818663
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_192",
+        "name": "Spor Salonu - Yazır",
+        "category": "recreation",
+        "mahalle": "Yazır",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.50190350568821,
+          37.86051582164901
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_193",
+        "name": "Belediye - Yazır",
+        "category": "government",
+        "mahalle": "Yazır",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.50876345706268,
+          37.85755883693
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_194",
+        "name": "Kaymakamlık - Yazır",
+        "category": "government",
+        "mahalle": "Yazır",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.50074701821644,
+          37.85594142892094
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_195",
+        "name": "Nüfus Müdürlüğü - Yazır",
+        "category": "government",
+        "mahalle": "Yazır",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.509755903266864,
+          37.850946201085044
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_196",
+        "name": "Üniversite - Horozluhan",
+        "category": "education",
+        "mahalle": "Horozluhan",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.51679843172283,
+          37.88113102513062
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_197",
+        "name": "Kreş - Horozluhan",
+        "category": "education",
+        "mahalle": "Horozluhan",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.52766408130816,
+          37.87620064678498
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_198",
+        "name": "Eczane - Horozluhan",
+        "category": "health",
+        "mahalle": "Horozluhan",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.51940372066942,
+          37.87891279561456
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_199",
+        "name": "Sağlık Ocağı - Horozluhan",
+        "category": "health",
+        "mahalle": "Horozluhan",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.516339730356975,
+          37.87487918355978
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_200",
+        "name": "Sağlık Ocağı - Horozluhan",
+        "category": "health",
+        "mahalle": "Horozluhan",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.51286264303091,
+          37.88649039796956
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_201",
+        "name": "Eczane - Horozluhan",
+        "category": "health",
+        "mahalle": "Horozluhan",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.51740713895079,
+          37.87261962722945
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_202",
+        "name": "Hastane - Horozluhan",
+        "category": "health",
+        "mahalle": "Horozluhan",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.52736862162399,
+          37.880913060457026
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_203",
+        "name": "Eczane - Horozluhan",
+        "category": "health",
+        "mahalle": "Horozluhan",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.525067117661585,
+          37.87154234141393
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_204",
+        "name": "Market - Horozluhan",
+        "category": "commerce",
+        "mahalle": "Horozluhan",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.52110937140343,
+          37.88107261784752
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_205",
+        "name": "AVM - Horozluhan",
+        "category": "commerce",
+        "mahalle": "Horozluhan",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.52604958414836,
+          37.882201603638315
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_206",
+        "name": "Türbe - Horozluhan",
+        "category": "religion",
+        "mahalle": "Horozluhan",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.527178332971964,
+          37.876033979719196
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_207",
+        "name": "Cami - Horozluhan",
+        "category": "religion",
+        "mahalle": "Horozluhan",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.518177253285025,
+          37.881186083476614
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_208",
+        "name": "Cami - Horozluhan",
+        "category": "religion",
+        "mahalle": "Horozluhan",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.51505031336201,
+          37.879807744964594
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_209",
+        "name": "Türbe - Horozluhan",
+        "category": "religion",
+        "mahalle": "Horozluhan",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.52448979799923,
+          37.878884308485986
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_210",
+        "name": "Türbe - Horozluhan",
+        "category": "religion",
+        "mahalle": "Horozluhan",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.52917785608897,
+          37.882036303874365
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_211",
+        "name": "Cami - Horozluhan",
+        "category": "religion",
+        "mahalle": "Horozluhan",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.523580445844715,
+          37.88751423527925
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_212",
+        "name": "Türbe - Horozluhan",
+        "category": "religion",
+        "mahalle": "Horozluhan",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.528345811541364,
+          37.872574314304416
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_213",
+        "name": "Tramvay Durağı - Horozluhan",
+        "category": "transport",
+        "mahalle": "Horozluhan",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.51997202761686,
+          37.87207707102508
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_214",
+        "name": "Tramvay Durağı - Horozluhan",
+        "category": "transport",
+        "mahalle": "Horozluhan",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.527569854274056,
+          37.87515088622176
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_215",
+        "name": "Tramvay Durağı - Horozluhan",
+        "category": "transport",
+        "mahalle": "Horozluhan",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.5200792366953,
+          37.87324165578395
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_216",
+        "name": "Taksi Durağı - Horozluhan",
+        "category": "transport",
+        "mahalle": "Horozluhan",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.53312602824416,
+          37.872371355155536
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_217",
+        "name": "Tramvay Durağı - Horozluhan",
+        "category": "transport",
+        "mahalle": "Horozluhan",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.530296811859124,
+          37.87452747361401
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_218",
+        "name": "Tramvay Durağı - Horozluhan",
+        "category": "transport",
+        "mahalle": "Horozluhan",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.52850008419495,
+          37.87636002305376
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_219",
+        "name": "Otopark - Horozluhan",
+        "category": "transport",
+        "mahalle": "Horozluhan",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.53029410539948,
+          37.88369520817288
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_220",
+        "name": "Restoran - Horozluhan",
+        "category": "recreation",
+        "mahalle": "Horozluhan",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.521886087649435,
+          37.87458648081777
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_221",
+        "name": "Spor Salonu - Horozluhan",
+        "category": "recreation",
+        "mahalle": "Horozluhan",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.5302179136995,
+          37.88079256474309
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_222",
+        "name": "Spor Salonu - Horozluhan",
+        "category": "recreation",
+        "mahalle": "Horozluhan",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.51228426737978,
+          37.88516478806798
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_223",
+        "name": "Restoran - Horozluhan",
+        "category": "recreation",
+        "mahalle": "Horozluhan",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.52270069815554,
+          37.889589608162375
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_224",
+        "name": "Restoran - Horozluhan",
+        "category": "recreation",
+        "mahalle": "Horozluhan",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.51907525238058,
+          37.87458695310494
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_225",
+        "name": "Park - Horozluhan",
+        "category": "recreation",
+        "mahalle": "Horozluhan",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.52229405848108,
+          37.87796857881777
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_226",
+        "name": "Belediye - Horozluhan",
+        "category": "government",
+        "mahalle": "Horozluhan",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.51695144821549,
+          37.88432336155741
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_227",
+        "name": "Belediye - Horozluhan",
+        "category": "government",
+        "mahalle": "Horozluhan",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.53459693786721,
+          37.87832074476144
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_228",
+        "name": "Nüfus Müdürlüğü - Horozluhan",
+        "category": "government",
+        "mahalle": "Horozluhan",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.525358446431284,
+          37.881467757229146
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_229",
+        "name": "PTT - Horozluhan",
+        "category": "government",
+        "mahalle": "Horozluhan",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.520573566900005,
+          37.86364766884873
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_230",
+        "name": "Nüfus Müdürlüğü - Horozluhan",
+        "category": "government",
+        "mahalle": "Horozluhan",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.524036221493354,
+          37.8789703780444
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_231",
+        "name": "Dershane - Fevzi Çakmak",
+        "category": "education",
+        "mahalle": "Fevzi Çakmak",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.45958403503567,
+          37.847440717699115
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_232",
+        "name": "Dershane - Fevzi Çakmak",
+        "category": "education",
+        "mahalle": "Fevzi Çakmak",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.46841668746572,
+          37.85811763851682
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_233",
+        "name": "Dershane - Fevzi Çakmak",
+        "category": "education",
+        "mahalle": "Fevzi Çakmak",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.452606558824215,
+          37.86911903596441
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_234",
+        "name": "Sağlık Ocağı - Fevzi Çakmak",
+        "category": "health",
+        "mahalle": "Fevzi Çakmak",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.452765257487215,
+          37.87033649771113
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_235",
+        "name": "Klinik - Fevzi Çakmak",
+        "category": "health",
+        "mahalle": "Fevzi Çakmak",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.45462677044475,
+          37.8589014989035
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_236",
+        "name": "Hastane - Fevzi Çakmak",
+        "category": "health",
+        "mahalle": "Fevzi Çakmak",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.45261451965323,
+          37.86900990763507
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_237",
+        "name": "Mağaza - Fevzi Çakmak",
+        "category": "commerce",
+        "mahalle": "Fevzi Çakmak",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.462450203235704,
+          37.86679833763438
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_238",
+        "name": "AVM - Fevzi Çakmak",
+        "category": "commerce",
+        "mahalle": "Fevzi Çakmak",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.453048164842315,
+          37.86720103523804
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_239",
+        "name": "Market - Fevzi Çakmak",
+        "category": "commerce",
+        "mahalle": "Fevzi Çakmak",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.45480468221538,
+          37.87075994350578
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_240",
+        "name": "Mağaza - Fevzi Çakmak",
+        "category": "commerce",
+        "mahalle": "Fevzi Çakmak",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.45329541312969,
+          37.86155476715781
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_241",
+        "name": "Market - Fevzi Çakmak",
+        "category": "commerce",
+        "mahalle": "Fevzi Çakmak",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.45200182034216,
+          37.85905659920621
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_242",
+        "name": "Türbe - Fevzi Çakmak",
+        "category": "religion",
+        "mahalle": "Fevzi Çakmak",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.46681693998628,
+          37.86115439273073
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_243",
+        "name": "Türbe - Fevzi Çakmak",
+        "category": "religion",
+        "mahalle": "Fevzi Çakmak",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.446571870961385,
+          37.86284520773927
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_244",
+        "name": "Cami - Fevzi Çakmak",
+        "category": "religion",
+        "mahalle": "Fevzi Çakmak",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.46130659156425,
+          37.85831220804011
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_245",
+        "name": "Cami - Fevzi Çakmak",
+        "category": "religion",
+        "mahalle": "Fevzi Çakmak",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.451569372150274,
+          37.863827347500994
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_246",
+        "name": "Cami - Fevzi Çakmak",
+        "category": "religion",
+        "mahalle": "Fevzi Çakmak",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.45853685296239,
+          37.85631188359165
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_247",
+        "name": "Otopark - Fevzi Çakmak",
+        "category": "transport",
+        "mahalle": "Fevzi Çakmak",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.457731870604206,
+          37.856427773080675
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_248",
+        "name": "Otobüs Durağı - Fevzi Çakmak",
+        "category": "transport",
+        "mahalle": "Fevzi Çakmak",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.46644302290773,
+          37.85921749263648
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_249",
+        "name": "Otobüs Durağı - Fevzi Çakmak",
+        "category": "transport",
+        "mahalle": "Fevzi Çakmak",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.45648900867364,
+          37.863912948154514
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_250",
+        "name": "Tramvay Durağı - Fevzi Çakmak",
+        "category": "transport",
+        "mahalle": "Fevzi Çakmak",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.44752349394491,
+          37.854850132473835
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_251",
+        "name": "Tramvay Durağı - Fevzi Çakmak",
+        "category": "transport",
+        "mahalle": "Fevzi Çakmak",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.45347329155697,
+          37.853555332215755
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_252",
+        "name": "Park - Fevzi Çakmak",
+        "category": "recreation",
+        "mahalle": "Fevzi Çakmak",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.455293347156896,
+          37.86722895981944
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_253",
+        "name": "Spor Salonu - Fevzi Çakmak",
+        "category": "recreation",
+        "mahalle": "Fevzi Çakmak",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.45187728464421,
+          37.868577613795516
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_254",
+        "name": "Spor Salonu - Fevzi Çakmak",
+        "category": "recreation",
+        "mahalle": "Fevzi Çakmak",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.457682984993795,
+          37.871795926475954
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_255",
+        "name": "Belediye - Fevzi Çakmak",
+        "category": "government",
+        "mahalle": "Fevzi Çakmak",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.45284340524408,
+          37.87457930388137
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_256",
+        "name": "Kaymakamlık - Fevzi Çakmak",
+        "category": "government",
+        "mahalle": "Fevzi Çakmak",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.45784462280661,
+          37.86532488371334
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_257",
+        "name": "Nüfus Müdürlüğü - Fevzi Çakmak",
+        "category": "government",
+        "mahalle": "Fevzi Çakmak",
+        "is_landmark": false,
+        "importance": "high"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.47463803193214,
+          37.86089880653051
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_258",
+        "name": "Nüfus Müdürlüğü - Fevzi Çakmak",
+        "category": "government",
+        "mahalle": "Fevzi Çakmak",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.464410040387854,
+          37.86595381117672
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_259",
+        "name": "PTT - Fevzi Çakmak",
+        "category": "government",
+        "mahalle": "Fevzi Çakmak",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.452924899591224,
+          37.86314325559794
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_260",
+        "name": "Belediye - Fevzi Çakmak",
+        "category": "government",
+        "mahalle": "Fevzi Çakmak",
+        "is_landmark": false,
+        "importance": "low"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.46252884769694,
+          37.86704454751204
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_261",
+        "name": "Nüfus Müdürlüğü - Fevzi Çakmak",
+        "category": "government",
+        "mahalle": "Fevzi Çakmak",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.459218639216,
+          37.86089389701242
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_262",
+        "name": "Belediye - Fevzi Çakmak",
+        "category": "government",
+        "mahalle": "Fevzi Çakmak",
+        "is_landmark": false,
+        "importance": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.45881592474891,
+          37.87399902291396
+        ]
+      }
+    }
+  ]
+}

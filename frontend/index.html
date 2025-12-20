@@ -1,0 +1,1624 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Akıllı Atölye | Araç Bakım Platformu</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Mapbox GL -->
+  <script src="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.js"></script>
+  <link href="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.css" rel="stylesheet" />
+
+  <!-- Deck.gl -->
+  <script src="https://unpkg.com/deck.gl@8.9.33/dist.min.js"></script>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    :root {
+      --bg-primary: #0a0e17;
+      --bg-secondary: #111827;
+      --bg-tertiary: #1f2937;
+      --accent-cyan: #00f0ff;
+      --accent-magenta: #ff00aa;
+      --accent-yellow: #ffd700;
+      --accent-green: #00ff88;
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --border-color: rgba(255, 255, 255, 0.08);
+      --glass-bg: rgba(17, 24, 39, 0.85);
+      --glass-border: rgba(255, 255, 255, 0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      overflow: hidden;
+      height: 100vh;
+    }
+
+    /* Grid Noise Overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image:
+        linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Header */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 64px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--glass-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      z-index: 1000;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-magenta));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Mono', monospace;
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--bg-primary);
+    }
+
+    .logo-text {
+      font-family: 'Space Mono', monospace;
+      font-size: 20px;
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--accent-cyan), var(--text-primary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.5px;
+    }
+
+    .logo-subtitle {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .status-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: rgba(0, 255, 136, 0.1);
+      border: 1px solid rgba(0, 255, 136, 0.3);
+      border-radius: 20px;
+      font-size: 12px;
+      color: var(--accent-green);
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--accent-green);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.5;
+        transform: scale(1.2);
+      }
+    }
+
+    /* Main Layout */
+    .main-container {
+      display: flex;
+      height: 100vh;
+      padding-top: 64px;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 360px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      border-right: 1px solid var(--glass-border);
+      display: flex;
+      flex-direction: column;
+      z-index: 100;
+      overflow: hidden;
+    }
+
+    .sidebar-header {
+      padding: 20px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .sidebar-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+
+    /* Layer Controls */
+    .layer-controls {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .layer-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      background: var(--bg-tertiary);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: 1px solid transparent;
+    }
+
+    .layer-toggle:hover {
+      border-color: var(--accent-cyan);
+    }
+
+    .layer-toggle.active {
+      border-color: var(--accent-cyan);
+      background: rgba(0, 240, 255, 0.1);
+    }
+
+    .layer-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .layer-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    .layer-icon.buildings {
+      background: rgba(100, 150, 200, 0.3);
+    }
+
+    .layer-icon.pois {
+      background: rgba(255, 0, 170, 0.3);
+    }
+
+    .layer-icon.grid {
+      background: rgba(0, 240, 255, 0.3);
+    }
+
+    .layer-icon.roads {
+      background: rgba(255, 215, 0, 0.3);
+    }
+
+    .layer-name {
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .layer-count {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .toggle-switch {
+      width: 40px;
+      height: 22px;
+      background: var(--bg-secondary);
+      border-radius: 11px;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .toggle-switch::after {
+      content: '';
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      background: var(--text-secondary);
+      border-radius: 50%;
+      top: 2px;
+      left: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .layer-toggle.active .toggle-switch {
+      background: var(--accent-cyan);
+    }
+
+    .layer-toggle.active .toggle-switch::after {
+      left: 20px;
+      background: var(--bg-primary);
+    }
+
+    /* Indicators Panel */
+    .indicators-panel {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .indicator-card {
+      background: var(--bg-tertiary);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 12px;
+      border: 1px solid var(--border-color);
+    }
+
+    .indicator-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .indicator-name {
+      font-size: 13px;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .indicator-value {
+      font-family: 'Space Mono', monospace;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--accent-cyan);
+    }
+
+    .indicator-bar {
+      height: 6px;
+      background: var(--bg-secondary);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .indicator-fill {
+      height: 100%;
+      border-radius: 3px;
+      transition: width 0.5s ease;
+    }
+
+    .indicator-fill.cyan {
+      background: linear-gradient(90deg, var(--accent-cyan), #00a8ff);
+    }
+
+    .indicator-fill.magenta {
+      background: linear-gradient(90deg, var(--accent-magenta), #ff6b6b);
+    }
+
+    .indicator-fill.green {
+      background: linear-gradient(90deg, var(--accent-green), #00d68f);
+    }
+
+    .indicator-fill.yellow {
+      background: linear-gradient(90deg, var(--accent-yellow), #ffa500);
+    }
+
+    /* Map Container */
+    .map-container {
+      flex: 1;
+      position: relative;
+    }
+
+    #map {
+      width: 100%;
+      height: 100%;
+    }
+
+    #deck-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    /* Map Overlay Controls */
+    .map-controls {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      z-index: 100;
+    }
+
+    .map-btn {
+      width: 44px;
+      height: 44px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--text-secondary);
+      font-size: 18px;
+      transition: all 0.2s ease;
+    }
+
+    .map-btn:hover {
+      background: var(--bg-tertiary);
+      color: var(--accent-cyan);
+      border-color: var(--accent-cyan);
+    }
+
+    /* Info Panel */
+    .info-panel {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+    }
+
+    .info-stats {
+      display: flex;
+      gap: 40px;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-value {
+      font-family: 'Space Mono', monospace;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 4px;
+    }
+
+    .simulation-controls {
+      display: flex;
+      gap: 12px;
+    }
+
+    .sim-btn {
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .sim-btn.primary {
+      background: linear-gradient(135deg, var(--accent-cyan), #00a8ff);
+      color: var(--bg-primary);
+    }
+
+    .sim-btn.secondary {
+      background: var(--bg-tertiary);
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+    }
+
+    .sim-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 240, 255, 0.3);
+    }
+
+    /* Scenario Selector */
+    .scenario-selector {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 8px;
+      z-index: 100;
+    }
+
+    .scenario-btn {
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: none;
+      background: transparent;
+      color: var(--text-secondary);
+    }
+
+    .scenario-btn.active {
+      background: var(--accent-cyan);
+      color: var(--bg-primary);
+    }
+
+    .scenario-btn:hover:not(.active) {
+      background: var(--bg-tertiary);
+      color: var(--text-primary);
+    }
+
+    /* Tooltip */
+    .tooltip {
+      position: absolute;
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+      border-radius: 8px;
+      padding: 12px 16px;
+      pointer-events: none;
+      z-index: 1000;
+      display: none;
+      min-width: 200px;
+    }
+
+    .tooltip-title {
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 8px;
+      color: var(--accent-cyan);
+    }
+
+    .tooltip-content {
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Charts Container */
+    .chart-container {
+      padding: 20px;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .chart-title {
+      font-size: 13px;
+      color: var(--text-secondary);
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+
+    #indicatorChart {
+      max-height: 200px;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .indicator-card {
+      animation: fadeIn 0.5s ease forwards;
+    }
+
+    .indicator-card:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+
+    .indicator-card:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .indicator-card:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+
+    .indicator-card:nth-child(4) {
+      animation-delay: 0.4s;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg-secondary);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--bg-tertiary);
+      border-radius: 3px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--text-muted);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">
+      <div class="logo-icon">AA</div>
+      <div>
+        <div class="logo-text">Akıllı Atölye</div>
+        <div class="logo-subtitle">Kentsel Bakım Platformu</div>
+      </div>
+    </div>
+    <div class="header-actions">
+      <div class="status-badge">
+        <div class="status-dot"></div>
+        <span>Canlı Veri</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <div class="main-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-title">Katmanlar</div>
+        <div class="layer-controls">
+          <div class="layer-toggle active" data-layer="buildings" onclick="toggleLayer('buildings')">
+            <div class="layer-info">
+              <div class="layer-icon buildings">🏢</div>
+              <div>
+                <div class="layer-name">Binalar</div>
+                <div class="layer-count">810 yapı</div>
+              </div>
+            </div>
+            <div class="toggle-switch"></div>
+          </div>
+          <div class="layer-toggle active" data-layer="pois" onclick="toggleLayer('pois')">
+            <div class="layer-info">
+              <div class="layer-icon pois">📍</div>
+              <div>
+                <div class="layer-name">İlgi Noktaları</div>
+                <div class="layer-count">287 nokta</div>
+              </div>
+            </div>
+            <div class="toggle-switch"></div>
+          </div>
+          <div class="layer-toggle" data-layer="grid" onclick="toggleLayer('grid')">
+            <div class="layer-info">
+              <div class="layer-icon grid">📐</div>
+              <div>
+                <div class="layer-name">Analiz Gridi</div>
+                <div class="layer-count">2520 hücre</div>
+              </div>
+            </div>
+            <div class="toggle-switch"></div>
+          </div>
+          <div class="layer-toggle" data-layer="roads" onclick="toggleLayer('roads')">
+            <div class="layer-info">
+              <div class="layer-icon roads">🛣️</div>
+              <div>
+                <div class="layer-name">Yol Ağı</div>
+                <div class="layer-count">84 segment</div>
+              </div>
+            </div>
+            <div class="toggle-switch"></div>
+          </div>
+          <!-- New Bike Layer Toggle -->
+          <div class="layer-toggle active" data-layer="bikes" onclick="toggleLayer('bikes')">
+            <div class="layer-info">
+              <div class="layer-icon" style="background: rgba(0, 255, 136, 0.3)">🚲</div>
+              <div>
+                <div class="layer-name">Bisiklet İstasyonları</div>
+                <div class="layer-count">Canlı</div>
+              </div>
+            </div>
+            <div class="toggle-switch"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="indicators-panel">
+        <div class="sidebar-title">Kentsel Göstergeler</div>
+
+        <div class="indicator-card">
+          <div class="indicator-header">
+            <span class="indicator-name">Yürünebilirlik Skoru</span>
+            <span class="indicator-value">72</span>
+          </div>
+          <div class="indicator-bar">
+            <div class="indicator-fill cyan" style="width: 72%"></div>
+          </div>
+        </div>
+
+        <div class="indicator-card">
+          <div class="indicator-header">
+            <span class="indicator-name">Nüfus Yoğunluğu</span>
+            <span class="indicator-value">8.4K</span>
+          </div>
+          <div class="indicator-bar">
+            <div class="indicator-fill magenta" style="width: 65%"></div>
+          </div>
+        </div>
+
+        <div class="indicator-card">
+          <div class="indicator-header">
+            <span class="indicator-name">Yeşil Alan Oranı</span>
+            <span class="indicator-value">18%</span>
+          </div>
+          <div class="indicator-bar">
+            <div class="indicator-fill green" style="width: 18%"></div>
+          </div>
+        </div>
+
+        <div class="indicator-card">
+          <div class="indicator-header">
+            <span class="indicator-name">Erişilebilirlik</span>
+            <span class="indicator-value">84</span>
+          </div>
+          <div class="indicator-bar">
+            <div class="indicator-fill yellow" style="width: 84%"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chart-container">
+        <div class="chart-title">Arazi Kullanım Dağılımı</div>
+        <canvas id="indicatorChart"></canvas>
+      </div>
+    </aside>
+
+    <!-- Map Container -->
+    <div class="map-container">
+      <div id="map"></div>
+      <canvas id="deck-canvas"></canvas>
+
+      <!-- Scenario Selector -->
+      <div class="scenario-selector">
+        <button class="scenario-btn active" onclick="setScenario('current')">Mevcut Durum</button>
+        <button class="scenario-btn" onclick="setScenario('density')">Yoğunluk Artışı</button>
+        <button class="scenario-btn" onclick="setScenario('green')">Yeşil Dönüşüm</button>
+        <button class="scenario-btn" onclick="setScenario('transit')">Ulaşım Odaklı</button>
+      </div>
+
+      <!-- Map Controls -->
+      <div class="map-controls">
+        <button class="map-btn" onclick="resetView()" title="Görünümü Sıfırla">🏠</button>
+        <button class="map-btn" onclick="toggle3D()" title="3D Görünüm">🎲</button>
+        <button class="map-btn" onclick="toggleNight()" title="Gece Modu">🌙</button>
+        <button class="map-btn" onclick="takeScreenshot()" title="Ekran Görüntüsü">📷</button>
+      </div>
+
+      <!-- Info Panel -->
+      <div class="info-panel">
+        <div class="info-stats">
+          <div class="stat-item">
+            <div class="stat-value" id="totalBuildings">810</div>
+            <div class="stat-label">Bina</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value" id="totalPopulation">2.3M</div>
+            <div class="stat-label">Nüfus</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value" id="totalArea">2,100</div>
+            <div class="stat-label">km² Alan</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value" id="avgWalkability">72</div>
+            <div class="stat-label">Yürünebilirlik</div>
+          </div>
+        </div>
+        <div class="simulation-controls">
+          <button class="sim-btn secondary" onclick="openDataPanel()">
+            📊 Veri Paneli
+          </button>
+          <button class="sim-btn primary" onclick="runSimulation()">
+            ▶️ Simülasyonu Başlat
+          </button>
+        </div>
+      </div>
+
+      <!-- Tooltip -->
+      <div class="tooltip" id="tooltip">
+        <div class="tooltip-title"></div>
+        <div class="tooltip-content"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ============================================
+    // CityScope Konya - Main Application
+    // ============================================
+
+    // Global State
+    const state = {
+      layers: {
+        buildings: true,
+        pois: true,
+        grid: false,
+        roads: false,
+        bikes: true // New bike layer
+      },
+      scenario: 'current',
+      is3D: false,
+      isNight: false,
+      data: {
+        buildings: null,
+        pois: null,
+        grid: null,
+        roads: null,
+        bikes: null
+      }
+    };
+
+    // Konya coordinates
+    const KONYA_CENTER = [32.4932, 37.8746];
+    const INITIAL_ZOOM = 13;
+
+    // Initialize MapLibre map
+    const map = new maplibregl.Map({
+      container: 'map',
+      style: {
+        version: 8,
+        sources: {
+          'osm': {
+            type: 'raster',
+            tiles: [
+              'https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png'
+            ],
+            tileSize: 256,
+            attribution: '© OpenStreetMap contributors © CARTO'
+          }
+        },
+        layers: [{
+          id: 'osm',
+          type: 'raster',
+          source: 'osm'
+        }]
+      },
+      center: KONYA_CENTER,
+      zoom: INITIAL_ZOOM,
+      pitch: 0,
+      bearing: 0
+    });
+
+    // Add navigation controls
+    map.addControl(new maplibregl.NavigationControl(), 'bottom-right');
+
+    // Data Storage
+    let buildingsData = [];
+    let poisData = [];
+    let gridData = [];
+    let bikesData = [];
+    let roadsData = [];
+    let trafficAgents = [];
+    let animationFrame = null;
+
+    // Fetch Data from Backend
+    // Fetch Data from Backend
+    async function loadData() {
+      document.body.style.cursor = 'wait';
+      console.log('🔄 Veriler yükleniyor...');
+
+      // Helper to fetch safely
+      const fetchSafe = async (url, defaultVal = { features: [] }) => {
+        try {
+          const res = await fetch(url);
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          return await res.json();
+        } catch (e) {
+          console.warn(`Veri yüklenemedi (${url}):`, e);
+          return defaultVal;
+        }
+      };
+
+      try {
+        // Parallel fetch with error suppression
+        const [buildings, pois, grid, indicators, header, bikes, roads] = await Promise.all([
+          fetchSafe('/api/table/konya/buildings'),
+          fetchSafe('/api/table/konya/pois'),
+          fetchSafe('/api/table/konya/geogrid'),
+          fetchSafe('/api/table/konya/indicators', []),
+          fetchSafe('/api/table/konya/header', {}),
+          fetchSafe('/api/table/konya/transport/bikes'),
+          fetchSafe('/api/table/konya/roads')
+        ]);
+
+        // Process Buildings
+        buildingsData = (buildings.features || []).map(f => ({
+          position: f.geometry.coordinates[0][0],
+          height: f.properties.height,
+          floors: f.properties.floors,
+          type: f.properties.type,
+          mahalle: f.properties.mahalle
+        }));
+
+        // Process POIs
+        poisData = (pois.features || []).map(f => ({
+          position: f.geometry.coordinates,
+          name: f.properties.name,
+          category: f.properties.category,
+          isLandmark: f.properties.is_landmark,
+          color: getPOIColor(f.properties.category)
+        }));
+
+        // Process Grid
+        gridData = (grid.features || []).map(f => ({
+          polygon: f.geometry.coordinates[0],
+          walkability: f.properties.walkability,
+          density: f.properties.building_density,
+          greenRatio: f.properties.green_ratio,
+          landUse: f.properties.land_use
+        }));
+
+        // Process Bikes
+        bikesData = (bikes.features || []).map(f => ({
+          position: f.geometry.coordinates,
+          name: f.properties.adi || f.properties.ADI || 'Bisiklet Duragi',
+          capacity: f.properties.kapasite || 10
+        }));
+
+        // Process Roads
+        roadsData = (roads.features || []).map(f => ({
+          path: f.geometry.coordinates,
+          type: f.properties.type
+        }));
+
+        console.log(`✅ Veriler: Binalar=${buildingsData.length} Yollar=${roadsData.length} Bisiklet=${bikesData.length}`);
+
+        // Update UI
+        updateIndicatorsUI(indicators);
+        updateLayers();
+
+        // Auto-generate agents if roads exist
+        if (roadsData.length > 0) {
+          generateTrafficAgents();
+          // Auto-start animation immediately
+          if (!animationFrame) {
+            animateTraffic();
+            // Update button UI to reflect running state
+            setTimeout(() => {
+              const btn = document.querySelector('button[onclick="runSimulation()"]');
+              if (btn) {
+                btn.innerHTML = '⏹️ Simülasyonu Durdur';
+                btn.style.background = '#ff4444';
+              }
+            }, 100);
+          }
+        }
+
+      } catch (error) {
+        console.error('Kritik veri yükleme hatası:', error);
+        alert('Bazı veriler yüklenemedi. Konsol kayıtlarını inceleyin.');
+      } finally {
+        document.body.style.cursor = 'default';
+      }
+    }
+
+    // Traffic Simulation Logic
+    function generateTrafficAgents() {
+      if (roadsData.length === 0) return;
+
+      trafficAgents = [];
+      const agentCount = 1200; // Increased for better flow
+
+      for (let i = 0; i < agentCount; i++) {
+        const randomRoad = roadsData[Math.floor(Math.random() * roadsData.length)];
+        const path = randomRoad.path;
+
+        if (!path || path.length < 2) continue;
+
+        trafficAgents.push({
+          roadIndex: Math.floor(Math.random() * roadsData.length),
+          segmentIndex: 0,
+          progress: Math.random(),
+          position: path[0],
+          trail: [path[0], path[0]], // Track history for flow effect
+          speed: 0.008 + Math.random() * 0.008 // Faster flow
+        });
+      }
+    }
+
+    function animateTraffic() {
+      // Global Pulse for Moving Areas (Grid)
+      const time = Date.now() / 1000;
+      const pulse = (Math.sin(time) + 1) / 2; // 0 to 1
+
+      if (trafficAgents.length === 0) return;
+
+      trafficAgents.forEach(agent => {
+        const road = roadsData[agent.roadIndex];
+        if (!road || !road.path) return;
+
+        const path = road.path;
+
+        // Move agent
+        agent.progress += agent.speed;
+
+        if (agent.progress >= 1) {
+          agent.progress = 0;
+          agent.segmentIndex++;
+
+          if (agent.segmentIndex >= path.length - 1) {
+            agent.roadIndex = Math.floor(Math.random() * roadsData.length);
+            agent.segmentIndex = 0;
+            // Reset trail on jump
+            const newRoad = roadsData[agent.roadIndex];
+            if (newRoad && newRoad.path) {
+              agent.position = newRoad.path[0];
+              agent.trail = [agent.position, agent.position];
+            }
+          }
+        }
+
+        // Interpolate
+        const currentP1 = path[agent.segmentIndex];
+        const currentP2 = path[agent.segmentIndex + 1];
+
+        if (currentP1 && currentP2) {
+          const newPos = [
+            currentP1[0] + (currentP2[0] - currentP1[0]) * agent.progress,
+            currentP1[1] + (currentP2[1] - currentP1[1]) * agent.progress
+          ];
+
+          // Update trail (simple history)
+          agent.trail = [agent.position, newPos];
+          agent.position = newPos;
+        }
+      });
+
+      updateLayers(pulse); // Pass pulse to layers
+
+      animationFrame = requestAnimationFrame(animateTraffic);
+    }
+
+    function getPOIColor(category) {
+      const colors = {
+        education: [100, 200, 255],
+        health: [255, 100, 100],
+        commerce: [255, 200, 100],
+        religion: [200, 150, 255],
+        transport: [100, 255, 150],
+        recreation: [100, 255, 100],
+        government: [150, 150, 150]
+      };
+      return colors[category] || [255, 255, 255];
+    }
+
+    // Initialize Deck.gl
+    let deckgl;
+
+    map.on('load', () => {
+      initializeDeckGL();
+      loadData(); // Load real data
+      initChart();
+    });
+
+    function initializeDeckGL() {
+      deckgl = new deck.DeckGL({
+        container: 'deck-canvas',
+        mapStyle: null,
+        initialViewState: {
+          longitude: KONYA_CENTER[0],
+          latitude: KONYA_CENTER[1],
+          zoom: INITIAL_ZOOM,
+          pitch: 0,
+          bearing: 0
+        },
+        controller: false,
+        layers: []
+      });
+
+      // Sync Deck.gl with MapLibre
+      map.on('move', () => {
+        deckgl.setProps({
+          viewState: {
+            longitude: map.getCenter().lng,
+            latitude: map.getCenter().lat,
+            zoom: map.getZoom(),
+            pitch: map.getPitch(),
+            bearing: map.getBearing()
+          }
+        });
+      });
+    }
+
+    function updateLayers(pulse = 0) {
+      const layers = [];
+
+      // Moving Areas (Pulsating Grid)
+      if (state.layers.grid) {
+        layers.push(new deck.PolygonLayer({
+          id: 'grid-layer',
+          data: gridData,
+          pickable: true,
+          stroked: true,
+          filled: true,
+          wireframe: true,
+          lineWidthMinPixels: 1,
+          getPolygon: d => d.polygon,
+          // Animate elevation for high density areas ("Moving Areas")
+          getElevation: d => {
+            const baseH = state.is3D ? d.walkability * 2 : 0;
+            if (d.density > 0.7 && state.is3D) {
+              return baseH + (pulse * 50); // Breathing buildings
+            }
+            return baseH;
+          },
+          getFillColor: d => {
+            const w = d.walkability;
+            // Animate intense areas color
+            if (d.density > 0.8) {
+              // Pulse between red and orange
+              const r = 255;
+              const g = 100 + (pulse * 100);
+              return [r, g, 0, 150];
+            }
+            if (w > 70) return [0, 240, 255, 100];
+            if (w > 50) return [255, 200, 0, 80];
+            return [255, 100, 100, 60];
+          },
+          getLineColor: [0, 240, 255, 50],
+          getLineWidth: 1,
+          extruded: state.is3D,
+          onHover: showTooltip,
+          updateTriggers: {
+            getFillColor: [state.scenario, pulse],
+            getElevation: [state.is3D, state.scenario, pulse]
+          }
+        }));
+      }
+
+      // Buildings Layer
+      if (state.layers.buildings) {
+        layers.push(new deck.ColumnLayer({ // Upgrade to ColumnLayer for better 3D
+          id: 'buildings-layer',
+          data: buildingsData,
+          pickable: true,
+          extruded: true,
+          radius: 10,
+          elevationScale: state.is3D ? 1 : 0,
+          getPosition: d => d.position,
+          getFillColor: d => {
+            if (d.type === 'residential') return [100, 150, 200, 200];
+            if (d.type === 'commercial') return [200, 100, 100, 200];
+            return [150, 100, 200, 200];
+          },
+          getElevation: d => d.height,
+          onHover: showBuildingTooltip,
+          transitions: {
+            getElevation: 1000,
+            getFillColor: 1000
+          }
+        }));
+      }
+
+      // POIs Layer
+      if (state.layers.pois) {
+        layers.push(new deck.ScatterplotLayer({
+          id: 'pois-layer',
+          data: poisData,
+          pickable: true,
+          opacity: 0.9,
+          stroked: false,
+          filled: true,
+          radiusScale: 1,
+          radiusMinPixels: d => d.isLandmark ? 8 : 4,
+          radiusMaxPixels: 20,
+          getPosition: d => d.position,
+          getRadius: d => d.isLandmark ? 15 : 8,
+          getFillColor: d => [...d.color, 200],
+          onHover: showPOITooltip
+        }));
+      }
+
+      // Bikes Layer
+      if (state.layers.bikes) {
+        // Pulse Animation Loop (0 to 1 over 2 seconds)
+        const t = (Date.now() % 2000) / 2000;
+
+        // Add Pulse Effect Layer
+        layers.push(new deck.ScatterplotLayer({
+          id: 'bikes-pulse',
+          data: bikesData,
+          pickable: false,
+          stroked: true,
+          filled: false,
+          radiusScale: 1,
+          lineWidthMinPixels: 2,
+          getPosition: d => d.position,
+          // Animate radius: 20m -> 60m
+          getRadius: 20 + (t * 40),
+          // Animate opacity: Fade out
+          getLineColor: [0, 255, 136, 255 * (1 - t)],
+          updateTriggers: {
+            getRadius: t,
+            getLineColor: t
+          }
+        }));
+
+        layers.push(new deck.ScatterplotLayer({
+          id: 'bikes-layer',
+          data: bikesData,
+          pickable: true,
+          opacity: 1,
+          stroked: true,
+          filled: true,
+          radiusScale: 1,
+          radiusMinPixels: 5,
+          radiusMaxPixels: 15,
+          getPosition: d => d.position,
+          getRadius: 20,
+          getFillColor: [0, 255, 136, 255], // Green color
+          getLineColor: [255, 255, 255, 200],
+          getLineWidth: 2,
+          onHover: info => {
+            const tooltip = document.getElementById('tooltip');
+            if (info.object) {
+              tooltip.style.display = 'block';
+              tooltip.style.left = info.x + 10 + 'px';
+              tooltip.style.top = info.y + 10 + 'px';
+              tooltip.querySelector('.tooltip-title').textContent = '🚲 Bisiklet İstasyonu';
+              tooltip.querySelector('.tooltip-content').innerHTML = `
+                                 <strong>${info.object.name}</strong><br>
+                             `;
+            } else {
+              tooltip.style.display = 'none';
+            }
+          }
+        }));
+      }
+
+      // Traffic Flow Layer (TRAILS)
+      if (trafficAgents.length > 0) {
+        // Render trails as simple paths
+        layers.push(new deck.PathLayer({
+          id: 'traffic-flow',
+          data: trafficAgents,
+          pickable: false,
+          widthScale: 1,
+          widthMinPixels: 3,
+          getPath: d => d.trail,
+          getColor: [255, 160, 0, 200], // Orange Flow
+          getWidth: 5,
+          capRounded: true,
+          jointRounded: true,
+          opacity: 0.8
+        }));
+
+        // Render heads (optional, keep for clarity or remove for pure flow)
+        layers.push(new deck.ScatterplotLayer({
+          id: 'traffic-heads',
+          data: trafficAgents,
+          pickable: false,
+          radiusMinPixels: 2,
+          getPosition: d => d.position,
+          getFillColor: [255, 255, 255, 255] // White head
+        }));
+      }
+
+      deckgl.setProps({ layers });
+    }
+
+    // Tooltip functions
+    function showTooltip(info) {
+      const tooltip = document.getElementById('tooltip');
+      if (info.object) {
+        tooltip.style.display = 'block';
+        tooltip.style.left = info.x + 10 + 'px';
+        tooltip.style.top = info.y + 10 + 'px';
+        tooltip.querySelector('.tooltip-title').textContent = 'Grid Hücresi';
+        tooltip.querySelector('.tooltip-content').innerHTML = `
+                <strong>Yürünebilirlik:</strong> ${info.object.walkability.toFixed(1)}<br>
+                <strong>Yoğunluk:</strong> ${(info.object.density * 100).toFixed(0)}%<br>
+                <strong>Yeşil Alan:</strong> ${(info.object.greenRatio * 100).toFixed(0)}%
+            `;
+      } else {
+        tooltip.style.display = 'none';
+      }
+    }
+
+    function showBuildingTooltip(info) {
+      const tooltip = document.getElementById('tooltip');
+      if (info.object) {
+        tooltip.style.display = 'block';
+        tooltip.style.left = info.x + 10 + 'px';
+        tooltip.style.top = info.y + 10 + 'px';
+        tooltip.querySelector('.tooltip-title').textContent = `${info.object.mahalle} - Bina`;
+        tooltip.querySelector('.tooltip-content').innerHTML = `
+                <strong>Tip:</strong> ${info.object.type}<br>
+                <strong>Kat Sayısı:</strong> ${info.object.floors}<br>
+                <strong>Yükseklik:</strong> ${info.object.height}m
+            `;
+      } else {
+        tooltip.style.display = 'none';
+      }
+    }
+
+    function showPOITooltip(info) {
+      const tooltip = document.getElementById('tooltip');
+      if (info.object) {
+        tooltip.style.display = 'block';
+        tooltip.style.left = info.x + 10 + 'px';
+        tooltip.style.top = info.y + 10 + 'px';
+        tooltip.querySelector('.tooltip-title').textContent = info.object.name;
+        tooltip.querySelector('.tooltip-content').innerHTML = `
+                <strong>Kategori:</strong> ${info.object.category}<br>
+                ${info.object.isLandmark ? '<em>📍 Önemli Nokta</em>' : ''}
+            `;
+      } else {
+        tooltip.style.display = 'none';
+      }
+    }
+
+    // Scenario functions
+    async function setScenario(scenario) {
+      state.scenario = scenario;
+
+      document.querySelectorAll('.scenario-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      event.target.classList.add('active');
+
+      try {
+        const response = await fetch('/api/table/konya/scenario', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ scenario: scenario })
+        });
+
+        const result = await response.json();
+
+        // Refresh grid data to see changes
+        const gridRes = await fetch('/api/table/konya/geogrid');
+        const grid = await gridRes.json();
+
+        gridData = grid.features.map(f => ({
+          polygon: f.geometry.coordinates[0],
+          walkability: f.properties.walkability,
+          density: f.properties.building_density,
+          greenRatio: f.properties.green_ratio,
+          landUse: f.properties.land_use
+        }));
+
+        updateIndicatorsUI(result.indicators);
+        updateLayers();
+
+      } catch (error) {
+        console.error('Senaryo uygulama hatası:', error);
+      }
+    }
+
+    function updateIndicatorsUI(indicators) {
+      // Helper to find value by name
+      const findVal = (name) => {
+        const ind = indicators.find(i => i.name === name);
+        return ind ? ind.value : 0;
+      };
+
+      const walkability = findVal('Yürünebilirlik');
+      const buildingCount = findVal('Bina Sayısı');
+      const poiDiversity = findVal('POI Çeşitliliği');
+      const gridCells = findVal('Grid Hücreleri');
+
+      // Manually update specific UI cards (converting generic names to UI specific ones)
+      document.querySelectorAll('.indicator-value')[0].textContent = walkability; // Yürünebilirlik
+      document.querySelector('.indicator-fill.cyan').style.width = walkability + '%';
+
+      document.querySelectorAll('.indicator-value')[3].textContent = poiDiversity * 10; // Erişilebilirlik (Mapped to Diversity for demo)
+      document.querySelector('.indicator-fill.yellow').style.width = (poiDiversity * 10) + '%';
+
+      // Update Stats Panel
+      document.getElementById('avgWalkability').textContent = walkability;
+      document.getElementById('totalBuildings').textContent = buildingCount;
+    }
+
+    function animateValue(className, newValue) {
+      const elements = document.querySelectorAll(`.${className}`);
+      // Simple update for demo
+    }
+
+    // Map control functions
+    function resetView() {
+      map.flyTo({
+        center: KONYA_CENTER,
+        zoom: INITIAL_ZOOM,
+        pitch: 0,
+        bearing: 0,
+        duration: 1500
+      });
+    }
+
+    function toggle3D() {
+      state.is3D = !state.is3D;
+
+      map.easeTo({
+        pitch: state.is3D ? 60 : 0,
+        duration: 1000
+      });
+
+      updateLayers();
+    }
+
+    function toggleNight() {
+      state.isNight = !state.isNight;
+
+      const style = state.isNight ?
+        'https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png' :
+        'https://a.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png';
+
+      map.setStyle({
+        version: 8,
+        sources: {
+          'osm': {
+            type: 'raster',
+            tiles: [style],
+            tileSize: 256
+          }
+        },
+        layers: [{
+          id: 'osm',
+          type: 'raster',
+          source: 'osm'
+        }]
+      });
+    }
+
+    async function takeScreenshot() {
+      try {
+        const canvas = document.querySelector('#deck-canvas');
+        const link = document.createElement('a');
+        link.download = 'konya-analiz.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      } catch (err) {
+        console.error('Ekran görüntüsü hatası:', err);
+      }
+    }
+
+    function openDataPanel() {
+      const content = `
+            <div style="
+                position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+                background: rgba(0,0,0,0.8); z-index: 2000;
+                display: flex; align-items: center; justify-content: center;">
+                <div style="background: #111827; padding: 32px; border-radius: 16px; width: 500px; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 10px 40px rgba(0,0,0,0.5);">
+                    <h2 style="margin-bottom: 24px; color: #fff; border-bottom: 1px solid #333; padding-bottom: 10px;">📊 Veri Kaynakları</h2>
+                    <ul style="list-style: none; color: #94a3b8; line-height: 2.5; font-size: 16px;">
+                        <li>🏢 <strong>Binalar:</strong> ${buildingsData.length} yapı </li>
+                        <li>📍 <strong>İlgi Noktaları (POI):</strong> ${poisData.length} nokta</li>
+                        <li>📐 <strong>Analiz Izgarası:</strong> ${gridData.length} hücre</li>
+                        <li>🚲 <strong>Bisiklet İstasyonları:</strong> ${bikesData.length} istasyon <span style="color:#00ff88">(Canlı)</span></li>
+                        <li>🛣️ <strong>Yol Ağı:</strong> ${roadsData.length} segment</li>
+                        <li>🚗 <strong>Aktif Trafik:</strong> ${trafficAgents.length > 0 ? trafficAgents.length + ' araç (Simülasyon)' : 'Beklemede'}</li>
+                    </ul>
+                    <button onclick="this.parentElement.parentElement.remove()" style="
+                        margin-top: 24px; width: 100%; padding: 12px; 
+                        background: #00f0ff; color: #000; border: none; 
+                        border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 16px;
+                        transition: background 0.2s;">
+                        Kapat
+                    </button>
+                </div>
+            </div>
+        `;
+      const div = document.createElement('div');
+      div.innerHTML = content;
+      document.body.appendChild(div);
+    }
+
+    async function runSimulation() {
+      const btn = event.target || document.querySelector('button[onclick="runSimulation()"]');
+
+      if (animationFrame) {
+        // STOP Simulation
+        cancelAnimationFrame(animationFrame);
+        animationFrame = null;
+        trafficAgents = []; // clear agents
+        updateLayers(); // clear dots from map
+
+        btn.innerHTML = '▶️ Simülasyonu Başlat';
+        btn.style.background = ''; // Reset color
+        document.body.style.cursor = 'default';
+        alert('Simülasyon durduruldu. Trafik akışı sonlandırıldı.');
+        return;
+      }
+
+      // START Simulation
+      try {
+        btn.innerHTML = '⏳ Yükleniyor...';
+        btn.disabled = true;
+        document.body.style.cursor = 'wait';
+
+        // 1. Generate Agents
+        generateTrafficAgents();
+
+        if (trafficAgents.length === 0) {
+          alert('Yol verisi bulunamadı! Lütfen backendin çalıştığından ve yol verisinin yüklü olduğundan emin olun.');
+          btn.innerHTML = '▶️ Simülasyonu Başlat';
+          btn.disabled = false;
+          document.body.style.cursor = 'default';
+          return;
+        }
+
+        // 2. Start Animation Loop
+        animateTraffic();
+
+        // 3. Update UI to "Running" state
+        btn.innerHTML = '⏹️ Simülasyonu Durdur';
+        btn.disabled = false;
+        btn.style.background = '#ff4444'; // Red for stop
+        document.body.style.cursor = 'default';
+
+        // 4. Also trigger backend scenario for data consistency (optional)
+        await fetch('/api/table/konya/scenario', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ scenario: 'transit' })
+        });
+
+      } catch (error) {
+        console.error('Simülasyon başlatma hatası:', error);
+        alert('Simülasyon başlatılamadı.');
+        btn.innerHTML = '▶️ Simülasyonu Başlat';
+        btn.disabled = false;
+        document.body.style.cursor = 'default';
+      }
+    }
+
+
+    // Initialize Chart
+    function initChart() {
+      const ctx = document.getElementById('indicatorChart').getContext('2d');
+
+      new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels: ['Konut', 'Ticari', 'Karma', 'Sanayi', 'Yeşil'],
+          datasets: [{
+            data: [45, 20, 15, 12, 8],
+            backgroundColor: [
+              'rgba(100, 150, 200, 0.8)',
+              'rgba(200, 100, 100, 0.8)',
+              'rgba(150, 100, 200, 0.8)',
+              'rgba(100, 100, 100, 0.8)',
+              'rgba(100, 200, 100, 0.8)'
+            ],
+            borderColor: 'rgba(255, 255, 255, 0.1)',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: {
+                color: '#94a3b8',
+                padding: 10,
+                font: { size: 11 }
+              }
+            }
+          }
+        }
+      });
+    }
+
+    // Keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+      switch (e.key) {
+        case 'b': toggleLayer('buildings'); break;
+        case 'p': toggleLayer('pois'); break;
+        case 'g': toggleLayer('grid'); break;
+        case 'r': toggleLayer('roads'); break;
+        case '3': toggle3D(); break;
+        case 'n': toggleNight(); break;
+        case 'h': resetView(); break;
+      }
+    });
+
+    console.log(`
+        ╔═══════════════════════════════════════════════╗
+        ║     🏙️  Akıllı Atölye v1.0                   ║
+        ║     Kentsel Bakım Platformu                  ║
+        ╠═══════════════════════════════════════════════╣
+        ║  Klavye Kısayolları:                         ║
+        ║  B - Binalar     P - POI'ler                 ║
+        ║  G - Grid        R - Yollar                  ║
+        ║  3 - 3D Görünüm  N - Gece Modu              ║
+        ║  H - Ana Görünüm                             ║
+        ╚═══════════════════════════════════════════════╝
+        `);
+
+    // Akıllı Atölye - Kentsel Bakım Platformu
+  </script>
+</body>
+
+</html>

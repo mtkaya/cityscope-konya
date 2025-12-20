@@ -1,0 +1,110 @@
+{
+  "header": {
+    "name": "konya",
+    "city": "Konya",
+    "country": "Turkey",
+    "timestamp": "2025-12-15T14:53:49.366091",
+    "spatial": {
+      "latitude": 37.8746,
+      "longitude": 32.4932,
+      "rotation": 0,
+      "cellSize": 200,
+      "nrows": 40,
+      "ncols": 50
+    },
+    "owner": {
+      "name": "CityScope Konya",
+      "institute": "Konya Büyükşehir Belediyesi",
+      "contact": "kentbilgisistemi@konya.bel.tr"
+    },
+    "block": [
+      "type",
+      "height",
+      "density",
+      "walkability"
+    ]
+  },
+  "types": {
+    "residential": {
+      "color": [
+        100,
+        150,
+        200
+      ],
+      "height": 15,
+      "description": "Konut Alanı"
+    },
+    "commercial": {
+      "color": [
+        200,
+        100,
+        100
+      ],
+      "height": 20,
+      "description": "Ticari Alan"
+    },
+    "mixed": {
+      "color": [
+        150,
+        100,
+        200
+      ],
+      "height": 25,
+      "description": "Karma Kullanım"
+    },
+    "industrial": {
+      "color": [
+        100,
+        100,
+        100
+      ],
+      "height": 10,
+      "description": "Sanayi Alanı"
+    },
+    "green": {
+      "color": [
+        100,
+        200,
+        100
+      ],
+      "height": 2,
+      "description": "Yeşil Alan"
+    },
+    "historic": {
+      "color": [
+        200,
+        150,
+        100
+      ],
+      "height": 12,
+      "description": "Tarihi Alan"
+    }
+  },
+  "indicators": [
+    {
+      "name": "Nüfus Yoğunluğu",
+      "viz_type": "heatmap",
+      "unit": "kişi/km²"
+    },
+    {
+      "name": "Yürünebilirlik",
+      "viz_type": "bar",
+      "unit": "puan"
+    },
+    {
+      "name": "Yeşil Alan Oranı",
+      "viz_type": "pie",
+      "unit": "%"
+    },
+    {
+      "name": "Erişilebilirlik",
+      "viz_type": "radar",
+      "unit": "puan"
+    },
+    {
+      "name": "Bina Yoğunluğu",
+      "viz_type": "heatmap",
+      "unit": "m²/m²"
+    }
+  ]
+}
