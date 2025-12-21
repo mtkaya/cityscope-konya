@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konya Yol Ağı Haritası</title>
+    <script src="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.js"></script>
+    <link href="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.css" rel="stylesheet" />
+    <style>
+        body { margin: 0; padding: 0; font-family: Arial, sans-serif; }
+        #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+        .legend {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .legend h3 {
+            margin: 0 0 10px 0;
+            font-size: 16px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+            font-size: 13px;
+        }
+        .legend-line {
+            width: 30px;
+            height: 3px;
+            margin-right: 10px;
+        }
+        .stats {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .stats h3 {
+            margin: 0 0 10px 0;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+
+    <div class="legend">
+        <h3>🛣️ Yol Tipleri</h3>
+        <div class="legend-item">
+            <div class="legend-line" style="background: #ff0000; height: 5px;"></div>
+            <span>Otoyol</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-line" style="background: #ff6600; height: 4px;"></div>
+            <span>Ana Cadde</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-line" style="background: #ffaa00; height: 3px;"></div>
+            <span>İkincil Cadde</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-line" style="background: #ffdd00;"></div>
+            <span>Üçüncül Yol</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-line" style="background: #cccccc; height: 2px;"></div>
+            <span>Yerleşim Sokağı</span>
+        </div>
+    </div>
+
+    <div class="stats">
+        <h3>📊 İstatistikler</h3>
+        <div id="stats-content">Yükleniyor...</div>
+    </div>
+
+    <script>
+        // Harita oluştur
+        const map = new maplibregl.Map({
+            container: 'map',
+            style: {
+                version: 8,
+                sources: {
+                    'osm': {
+                        type: 'raster',
+                        tiles: ['https://tile.openstreetmap.org/{z}/{x}/{y}.png'],
+                        tileSize: 256,
+                        attribution: '© OpenStreetMap contributors'
+                    }
+                },
+                layers: [{
+                    id: 'osm',
+                    type: 'raster',
+                    source: 'osm'
+                }]
+            },
+            center: [32.4932, 37.8746], // Konya merkez
+            zoom: 12
+        });
+
+        // Yol verilerini yükle
+        fetch('konya_roads.geojson')
+            .then(response => response.json())
+            .then(data => {
+                // Haritaya ekle
+                map.on('load', () => {
+                    // Veri kaynağı ekle
+                    map.addSource('roads', {
+                        type: 'geojson',
+                        data: data
+                    });
+
+                    // Her yol tipi için katman ekle
+                    const roadStyles = {
+                        'motorway': { color: '#ff0000', width: 5 },
+                        'primary': { color: '#ff6600', width: 4 },
+                        'secondary': { color: '#ffaa00', width: 3 },
+                        'tertiary': { color: '#ffdd00', width: 2.5 },
+                        'residential': { color: '#cccccc', width: 2 }
+                    };
+
+                    Object.entries(roadStyles).forEach(([type, style]) => {
+                        map.addLayer({
+                            id: `roads-${type}`,
+                            type: 'line',
+                            source: 'roads',
+                            filter: ['==', ['get', 'type'], type],
+                            paint: {
+                                'line-color': style.color,
+                                'line-width': style.width
+                            }
+                        });
+
+                        // Tıklama olayı
+                        map.on('click', `roads-${type}`, (e) => {
+                            const props = e.features[0].properties;
+                            new maplibregl.Popup()
+                                .setLngLat(e.lngLat)
+                                .setHTML(`
+                                    <h3>${props.name}</h3>
+                                    <p><strong>Tip:</strong> ${props.type}</p>
+                                    <p><strong>Şerit:</strong> ${props.lanes}</p>
+                                    <p><strong>Hız Limiti:</strong> ${props.speed_limit} km/h</p>
+                                `)
+                                .addTo(map);
+                        });
+
+                        // Cursor değiştir
+                        map.on('mouseenter', `roads-${type}`, () => {
+                            map.getCanvas().style.cursor = 'pointer';
+                        });
+                        map.on('mouseleave', `roads-${type}`, () => {
+                            map.getCanvas().style.cursor = '';
+                        });
+                    });
+
+                    // İstatistikleri göster
+                    const stats = {};
+                    data.features.forEach(feature => {
+                        const type = feature.properties.type;
+                        stats[type] = (stats[type] || 0) + 1;
+                    });
+
+                    const typeNames = {
+                        'motorway': 'Otoyol',
+                        'primary': 'Ana Cadde',
+                        'secondary': 'İkincil Cadde',
+                        'tertiary': 'Üçüncül Yol',
+                        'residential': 'Yerleşim Sokağı'
+                    };
+
+                    let statsHTML = `<strong>Toplam:</strong> ${data.features.length} yol<br><br>`;
+                    Object.entries(stats).forEach(([type, count]) => {
+                        statsHTML += `${typeNames[type] || type}: ${count}<br>`;
+                    });
+                    document.getElementById('stats-content').innerHTML = statsHTML;
+                });
+            })
+            .catch(error => {
+                console.error('Veri yükleme hatası:', error);
+                document.getElementById('stats-content').innerHTML =
+                    '<span style="color: red;">Veri yüklenemedi</span>';
+            });
+
+        // Navigasyon kontrolü ekle
+        map.addControl(new maplibregl.NavigationControl());
+    </script>
+</body>
+</html>
