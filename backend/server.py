@@ -426,11 +426,23 @@ def analyze_density(table_name):
 # Static file serving
 # ============================================
 
+@app.route('/')
+def serve_index():
+    """Serve main index page"""
+    frontend_dir = Path(__file__).parent.parent / 'frontend' / 'dist'
+    return send_from_directory(frontend_dir, 'index.html')
+
 @app.route('/frontend/<path:filename>')
 def serve_frontend(filename):
     """Serve frontend files"""
     frontend_dir = Path(__file__).parent.parent / 'frontend'
     return send_from_directory(frontend_dir, filename)
+
+@app.route('/assets/<path:filename>')
+def serve_assets(filename):
+    """Serve built frontend assets"""
+    assets_dir = Path(__file__).parent.parent / 'frontend' / 'dist' / 'assets'
+    return send_from_directory(assets_dir, filename)
 
 # ============================================
 # Main
