@@ -9,8 +9,13 @@ from flask import Flask, jsonify, request, send_from_directory
 from flask_cors import CORS
 import json
 import os
+import logging
 from datetime import datetime
 from pathlib import Path
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 CORS(app)
@@ -22,12 +27,24 @@ DATA_DIR = Path(__file__).parent.parent / 'data'
 tables = {}
 
 def load_json(filename):
-    """Load JSON file from data directory"""
+    """Load JSON file from data directory with error handling"""
     filepath = DATA_DIR / filename
-    if filepath.exists():
+    try:
+        if not filepath.exists():
+            logger.warning(f"File not found: {filename}")
+            return None
+
         with open(filepath, 'r', encoding='utf-8') as f:
             return json.load(f)
-    return None
+    except json.JSONDecodeError as e:
+        logger.error(f"Invalid JSON in file {filename}: {str(e)}")
+        return None
+    except PermissionError as e:
+        logger.error(f"Permission denied reading file {filename}: {str(e)}")
+        return None
+    except Exception as e:
+        logger.error(f"Unexpected error loading {filename}: {str(e)}")
+        return None
 
 # Initialize Konya table
 def init_konya_table():
@@ -195,13 +212,19 @@ def get_konya_bikes():
             return jsonify({"error": "Bike station data not found"}), 404
             
         # Try reading with semi-colon separator first as seen in the file
+        import pandas as pd
         try:
             df = pd.read_csv(csv_path, sep=';', encoding='utf-8')
             # Fallback if only 1 column found (wrong separator)
             if len(df.columns) <= 1:
                 df = pd.read_csv(csv_path, sep=',', encoding='utf-8')
-        except:
-             df = pd.read_csv(csv_path, encoding='utf-8')
+        except (pd.errors.ParserError, UnicodeDecodeError, FileNotFoundError) as e:
+            logger.warning(f"Error reading CSV with semicolon/comma separator: {str(e)}, trying default")
+            try:
+                df = pd.read_csv(csv_path, encoding='utf-8')
+            except Exception as parse_error:
+                logger.error(f"Failed to parse CSV file: {str(parse_error)}")
+                return jsonify({"error": "Failed to parse bike station data"}), 500
 
         features = []
         for _, row in df.iterrows():
@@ -299,73 +322,124 @@ def get_roads(table_name):
 @app.route('/api/table/<table_name>/geogrid', methods=['POST'])
 def update_geogrid(table_name):
     """Update geogrid data (for interactive changes)"""
-    if table_name not in tables:
-        return jsonify({'error': 'Table not found'}), 404
-    
-    data = request.get_json()
-    if data:
+    try:
+        if table_name not in tables:
+            return jsonify({'error': f'Table "{table_name}" not found'}), 404
+
+        data = request.get_json()
+        if not data:
+            return jsonify({'error': 'No data provided'}), 400
+
+        # Validate data structure
+        if not isinstance(data, dict):
+            return jsonify({'error': 'Invalid data format: expected JSON object'}), 400
+
         tables[table_name]['geogrid'] = data
         tables[table_name]['meta']['modified'] = datetime.now().isoformat()
-        
+
         # Recalculate indicators
-        tables[table_name]['indicators'] = calculate_indicators(
-            data,
-            tables[table_name].get('buildings', {}),
-            tables[table_name].get('pois', {})
-        )
-        
+        try:
+            tables[table_name]['indicators'] = calculate_indicators(
+                data,
+                tables[table_name].get('buildings', {}),
+                tables[table_name].get('pois', {})
+            )
+        except Exception as calc_error:
+            logger.error(f"Error calculating indicators: {str(calc_error)}")
+            # Still allow update but log the error
+            tables[table_name]['indicators'] = []
+
+        logger.info(f"Successfully updated geogrid for table '{table_name}'")
         return jsonify({'status': 'success', 'message': 'Geogrid updated'})
-    
-    return jsonify({'error': 'No data provided'}), 400
+    except Exception as e:
+        logger.error(f"Error updating geogrid for table '{table_name}': {str(e)}")
+        return jsonify({'error': 'Failed to update geogrid due to internal error'}), 500
 
 @app.route('/api/table/<table_name>/scenario', methods=['POST'])
 def apply_scenario(table_name):
-    """Apply a predefined scenario"""
-    if table_name not in tables:
-        return jsonify({'error': 'Table not found'}), 404
-    
-    data = request.get_json()
-    scenario = data.get('scenario', 'current')
-    
-    # Scenario modifiers
-    scenarios = {
-        'current': {'density_mult': 1.0, 'green_mult': 1.0, 'walkability_add': 0},
-        'density': {'density_mult': 1.5, 'green_mult': 0.7, 'walkability_add': -10},
-        'green': {'density_mult': 0.8, 'green_mult': 2.0, 'walkability_add': 15},
-        'transit': {'density_mult': 1.2, 'green_mult': 1.2, 'walkability_add': 20}
-    }
-    
-    if scenario not in scenarios:
-        return jsonify({'error': 'Unknown scenario'}), 400
-    
-    mods = scenarios[scenario]
-    
-    # Apply modifications to grid
-    grid = tables[table_name].get('geogrid', {})
-    for feature in grid.get('features', []):
-        props = feature.get('properties', {})
-        if 'building_density' in props:
-            props['building_density'] *= mods['density_mult']
-        if 'green_ratio' in props:
-            props['green_ratio'] *= mods['green_mult']
-        if 'walkability' in props:
-            props['walkability'] = min(100, max(0, props['walkability'] + mods['walkability_add']))
-    
-    tables[table_name]['meta']['modified'] = datetime.now().isoformat()
-    tables[table_name]['meta']['active_scenario'] = scenario
-    
-    # Recalculate indicators
-    tables[table_name]['indicators'] = calculate_indicators(
-        grid,
-        tables[table_name].get('buildings', {}),
-        tables[table_name].get('pois', {})
-    )
-    
-    return jsonify({
-        'status': 'success',
-        'scenario': scenario,
-        'indicators': tables[table_name]['indicators']
-    })
+    """Apply a predefined scenario with validation and error handling"""
+    try:
+        if table_name not in tables:
+            return jsonify({'error': f'Table "{table_name}" not found'}), 404
+
+        data = request.get_json()
+        if not data:
+            return jsonify({'error': 'No data provided'}), 400
+
+        scenario = data.get('scenario', 'current')
+
+        # Scenario modifiers
+        scenarios = {
+            'current': {'density_mult': 1.0, 'green_mult': 1.0, 'walkability_add': 0},
+            'density': {'density_mult': 1.5, 'green_mult': 0.7, 'walkability_add': -10},
+            'green': {'density_mult': 0.8, 'green_mult': 2.0, 'walkability_add': 15},
+            'transit': {'density_mult': 1.2, 'green_mult': 1.2, 'walkability_add': 20}
+        }
+
+        if scenario not in scenarios:
+            return jsonify({
+                'error': f'Unknown scenario "{scenario}"',
+                'available_scenarios': list(scenarios.keys())
+            }), 400
+
+        mods = scenarios[scenario]
+
+        # Apply modifications to grid
+        grid = tables[table_name].get('geogrid', {})
+        if not isinstance(grid, dict):
+            logger.error(f"Invalid geogrid data type for table '{table_name}'")
+            return jsonify({'error': 'Invalid geogrid data structure'}), 500
+
+        features = grid.get('features', [])
+        if not isinstance(features, list):
+            logger.error(f"Invalid geogrid features type for table '{table_name}'")
+            return jsonify({'error': 'Invalid geogrid features structure'}), 500
+
+        modified_count = 0
+        for feature in features:
+            if not isinstance(feature, dict):
+                continue
+
+            props = feature.get('properties', {})
+            if not isinstance(props, dict):
+                continue
+
+            try:
+                if 'building_density' in props and isinstance(props['building_density'], (int, float)):
+                    props['building_density'] *= mods['density_mult']
+                    modified_count += 1
+                if 'green_ratio' in props and isinstance(props['green_ratio'], (int, float)):
+                    props['green_ratio'] *= mods['green_mult']
+                if 'walkability' in props and isinstance(props['walkability'], (int, float)):
+                    props['walkability'] = min(100, max(0, props['walkability'] + mods['walkability_add']))
+            except (TypeError, ValueError) as e:
+                logger.warning(f"Error modifying feature properties: {str(e)}")
+                continue
+
+        tables[table_name]['meta']['modified'] = datetime.now().isoformat()
+        tables[table_name]['meta']['active_scenario'] = scenario
+
+        # Recalculate indicators
+        try:
+            tables[table_name]['indicators'] = calculate_indicators(
+                grid,
+                tables[table_name].get('buildings', {}),
+                tables[table_name].get('pois', {})
+            )
+        except Exception as calc_error:
+            logger.error(f"Error calculating indicators: {str(calc_error)}")
+            tables[table_name]['indicators'] = []
+
+        logger.info(f"Applied scenario '{scenario}' to table '{table_name}', modified {modified_count} features")
+        return jsonify({
+            'status': 'success',
+            'scenario': scenario,
+            'modified_features': modified_count,
+            'indicators': tables[table_name]['indicators']
+        })
+    except Exception as e:
+        logger.error(f"Error applying scenario to table '{table_name}': {str(e)}")
+        return jsonify({'error': 'Failed to apply scenario due to internal error'}), 500
 
 # ============================================
 # Analysis endpoints

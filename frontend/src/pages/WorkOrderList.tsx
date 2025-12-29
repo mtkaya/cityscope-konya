@@ -7,6 +7,7 @@ export const WorkOrderList = () => {
     const navigate = useNavigate();
     const [orders, setOrders] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
     const [showCreateModal, setShowCreateModal] = useState(false);
     const [newOrder, setNewOrder] = useState({ vehicle_plate: '', description: '', technician_id: 1 });
 
@@ -16,10 +17,16 @@ export const WorkOrderList = () => {
 
     const fetchOrders = async () => {
         try {
+            setError(null);
             const res = await api.get('/work-orders/');
             setOrders(res.data);
-        } catch (err) { console.error(err); }
-        finally { setLoading(false); }
+        } catch (err: any) {
+            console.error('Error fetching work orders:', err);
+            setError(err.message || 'İş emirleri yüklenirken hata oluştu');
+            setOrders([]);
+        } finally {
+            setLoading(false);
+        }
     };
 
     const handleCreate = async (e: React.FormEvent) => {
@@ -33,6 +40,8 @@ export const WorkOrderList = () => {
         }
     };
 
+    if (loading) return <div className="text-center py-8">Yükleniyor...</div>;
+
     return (
         <div className="space-y-6">
             <div className="flex justify-between items-center">
@@ -45,6 +54,15 @@ export const WorkOrderList = () => {
                     Yeni İş Emri Aç
                 </button>
             </div>
+
+            {error && (
+                <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg flex justify-between items-center">
+                    <span>{error}</span>
+                    <button onClick={fetchOrders} className="text-red-600 hover:text-red-800 font-medium">
+                        Tekrar Dene
+                    </button>
+                </div>
+            )}
 
             <div className="grid gap-4">
                 {orders.map((wo) => (

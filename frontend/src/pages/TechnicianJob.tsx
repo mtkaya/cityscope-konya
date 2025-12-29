@@ -45,24 +45,45 @@ export const TechnicianJob = () => {
     };
 
     const fetchInventory = async () => {
-        const res = await api.get('/inventory/');
-        setParts(res.data);
+        try {
+            const res = await api.get('/inventory/');
+            setParts(res.data);
+        } catch (err: any) {
+            console.error('Error fetching inventory:', err);
+            alert('Envanter yüklenirken hata oluştu: ' + (err.message || 'Bilinmeyen hata'));
+            setParts([]);
+        }
     };
 
     const handleStart = async () => {
-        await api.post(`/work-orders/${id}/start`);
-        fetchJob(); // Refresh
+        try {
+            await api.post(`/work-orders/${id}/start`);
+            await fetchJob(); // Refresh
+        } catch (err: any) {
+            console.error('Error starting work order:', err);
+            alert('İş başlatılamadı: ' + (err.message || 'Bilinmeyen hata'));
+        }
     };
 
     const handleStop = async () => {
-        await api.post(`/work-orders/${id}/stop`);
-        fetchJob();
+        try {
+            await api.post(`/work-orders/${id}/stop`);
+            await fetchJob();
+        } catch (err: any) {
+            console.error('Error stopping work order:', err);
+            alert('İş durdurulamadı: ' + (err.message || 'Bilinmeyen hata'));
+        }
     };
 
     const handleFinish = async () => {
         if (confirm('İşi tamamlamak istediğinize emin misiniz?')) {
-            await api.put(`/work-orders/${id}/status?status=completed`);
-            navigate('/work-orders');
+            try {
+                await api.put(`/work-orders/${id}/status?status=completed`);
+                navigate('/work-orders');
+            } catch (err: any) {
+                console.error('Error completing work order:', err);
+                alert('İş tamamlanamadı: ' + (err.message || 'Bilinmeyen hata'));
+            }
         }
     };
 

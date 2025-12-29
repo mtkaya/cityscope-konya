@@ -5,6 +5,7 @@ import api from '../api';
 export const Inventory = () => {
     const [items, setItems] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
     const [showAddModal, setShowAddModal] = useState(false);
     const [newItem, setNewItem] = useState({ name: '', sku: '', quantity: 0, critical_level: 5 });
 
@@ -14,10 +15,13 @@ export const Inventory = () => {
 
     const fetchInventory = async () => {
         try {
+            setError(null);
             const res = await api.get('/inventory/');
             setItems(res.data);
-        } catch (err) {
-            console.error(err);
+        } catch (err: any) {
+            console.error('Error fetching inventory:', err);
+            setError(err.message || 'Envanter yüklenirken hata oluştu');
+            setItems([]);
         } finally {
             setLoading(false);
         }
@@ -29,11 +33,14 @@ export const Inventory = () => {
             await api.post('/inventory/', newItem);
             setShowAddModal(false);
             setNewItem({ name: '', sku: '', quantity: 0, critical_level: 5 });
-            fetchInventory();
-        } catch (err) {
-            alert('Error adding item');
+            await fetchInventory();
+        } catch (err: any) {
+            console.error('Error adding item:', err);
+            alert('Malzeme eklenirken hata oluştu: ' + (err.message || 'Bilinmeyen hata'));
         }
     };
+
+    if (loading) return <div className="text-center py-8">Yükleniyor...</div>;
 
     return (
         <div className="space-y-6">
@@ -50,6 +57,15 @@ export const Inventory = () => {
                     Yeni Malzeme
                 </button>
             </div>
+
+            {error && (
+                <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg flex justify-between items-center">
+                    <span>{error}</span>
+                    <button onClick={fetchInventory} className="text-red-600 hover:text-red-800 font-medium">
+                        Tekrar Dene
+                    </button>
+                </div>
+            )}
 
             <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
                 <div className="p-4 border-b border-gray-100 flex gap-4">

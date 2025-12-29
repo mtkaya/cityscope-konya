@@ -1,10 +1,14 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
+from sqlalchemy.exc import SQLAlchemyError
 from typing import List, Dict
 import random
 import math
 from datetime import datetime
+import logging
 from .. import models, database
+
+logger = logging.getLogger(__name__)
 
 router = APIRouter(
     prefix="/digital-twin",
@@ -27,26 +31,38 @@ def get_live_vehicles(db: Session = Depends(get_db)):
     """
     Returns vehicles with simulated GPS coordinates and status.
     """
-    vehicles = db.query(models.Vehicle).filter(models.Vehicle.status == models.VehicleStatus.ACTIVE).all()
-    
-    response = []
-    for v in vehicles:
-        # Simulate semi-random positions around Konya center
-        # Deterministic randomness based on ID + Minute so they move slowly
-        time_seed = int(datetime.utcnow().timestamp() / 10) # Changes every 10 seconds
-        
-        offset_lat = (math.sin(v.id + time_seed) * 0.05)
-        offset_lon = (math.cos(v.id + time_seed) * 0.05)
-        
-        response.append({
-            "id": v.id,
-            "plate": v.plate,
-            "lat": KONYA_LAT + offset_lat,
-            "lng": KONYA_LON + offset_lon,
-            "speed": abs(int(offset_lat * 1000)) % 90, # Fake speed
-            "status": "Moving" if (v.id % 2 == 0) else "Stopped"
-        })
-    return response
+    try:
+        vehicles = db.query(models.Vehicle).filter(models.Vehicle.status == models.VehicleStatus.ACTIVE).all()
+
+        response = []
+        for v in vehicles:
+            try:
+                # Simulate semi-random positions around Konya center
+                # Deterministic randomness based on ID + Minute so they move slowly
+                time_seed = int(datetime.utcnow().timestamp() / 10)  # Changes every 10 seconds
+
+                offset_lat = (math.sin(v.id + time_seed) * 0.05)
+                offset_lon = (math.cos(v.id + time_seed) * 0.05)
+
+                response.append({
+                    "id": v.id,
+                    "plate": v.plate,
+                    "lat": KONYA_LAT + offset_lat,
+                    "lng": KONYA_LON + offset_lon,
+                    "speed": abs(int(offset_lat * 1000)) % 90,  # Fake speed
+                    "status": "Moving" if (v.id % 2 == 0) else "Stopped"
+                })
+            except Exception as e:
+                logger.warning(f"Error processing vehicle {v.id} for digital twin: {str(e)}")
+                continue  # Skip this vehicle but continue processing others
+
+        return response
+    except SQLAlchemyError as e:
+        logger.error(f"Database error fetching live vehicles: {str(e)}")
+        raise HTTPException(status_code=500, detail="Failed to retrieve vehicle data from database")
+    except Exception as e:
+        logger.error(f"Unexpected error in get_live_vehicles: {str(e)}")
+        raise HTTPException(status_code=500, detail="An unexpected error occurred while fetching live vehicle data")
 
 @router.get("/telemetry/{vehicle_id}")
 def get_vehicle_telemetry(vehicle_id: int):
