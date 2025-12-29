@@ -456,7 +456,8 @@ if __name__ == '__main__':
     print(f"   GET  /api/table/konya/indicators")
     print(f"   POST /api/table/konya/scenario")
     
-    print(f"\n🚀 Server başlatılıyor: http://localhost:5555")
+    port = int(os.environ.get('PORT', 5555))
+    print(f"\n🚀 Server başlatılıyor: http://localhost:{port}")
     print("=" * 60)
-    
-    app.run(host='0.0.0.0', port=5555, debug=True)
+
+    app.run(host='0.0.0.0', port=port, debug=True)

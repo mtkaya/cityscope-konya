@@ -37,11 +37,11 @@ COPY . .
 RUN python data/generate_sample_data.py || true
 
 # Expose port
-EXPOSE 5000
+EXPOSE 5555
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-    CMD curl -f http://localhost:5000/ || exit 1
+    CMD curl -f http://localhost:5555/ || exit 1
 
 # Run server
 CMD ["python", "backend/server.py"]
