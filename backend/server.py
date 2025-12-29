@@ -276,12 +276,34 @@ def get_konya_bikes():
             "features": []
         })
 
+@app.route('/api/table/konya/transport/buses', methods=['GET'])
+def get_konya_buses():
+    """
+    Returns bus route locations from GeoJSON.
+    """
+    try:
+        buses_path = os.path.join(DATA_DIR, 'konya_bus_routes.geojson')
+        if not os.path.exists(buses_path):
+            return jsonify({"error": "Bus route data not found"}), 404
+
+        with open(buses_path, 'r', encoding='utf-8') as f:
+            bus_data = json.load(f)
+
+        return jsonify(bus_data)
+
+    except Exception as e:
+        app.logger.error(f"Error loading bus data: {e}")
+        return jsonify({
+            "type": "FeatureCollection",
+            "features": []
+        })
+
 @app.route('/api/table/<table_name>/pois')
 def get_pois(table_name):
     """Get POIs data"""
     if table_name not in tables:
         return jsonify({'error': 'Table not found'}), 404
-    
+
     return jsonify(tables[table_name].get('pois', {}))
 
 @app.route('/api/table/<table_name>/roads')

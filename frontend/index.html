@@ -699,6 +699,17 @@
             </div>
             <div class="toggle-switch"></div>
           </div>
+          <!-- New Bus Layer Toggle -->
+          <div class="layer-toggle active" data-layer="buses" onclick="toggleLayer('buses')">
+            <div class="layer-info">
+              <div class="layer-icon" style="background: rgba(229, 57, 53, 0.3)">🚌</div>
+              <div>
+                <div class="layer-name">Otobüs Hatları</div>
+                <div class="layer-count">Canlı Animasyon</div>
+              </div>
+            </div>
+            <div class="toggle-switch"></div>
+          </div>
         </div>
       </div>
 
@@ -823,7 +834,8 @@
         pois: true,
         grid: false,
         roads: false,
-        bikes: true // New bike layer
+        bikes: true, // New bike layer
+        buses: true // New bus layer
       },
       scenario: 'current',
       is3D: false,
@@ -833,7 +845,8 @@
         pois: null,
         grid: null,
         roads: null,
-        bikes: null
+        bikes: null,
+        buses: null
       }
     };
 
@@ -877,7 +890,9 @@
     let gridData = [];
     let bikesData = [];
     let roadsData = [];
+    let busesData = [];
     let trafficAgents = [];
+    let busAgents = [];
     let animationFrame = null;
 
     // Fetch Data from Backend
@@ -900,14 +915,15 @@
 
       try {
         // Parallel fetch with error suppression
-        const [buildings, pois, grid, indicators, header, bikes, roads] = await Promise.all([
+        const [buildings, pois, grid, indicators, header, bikes, roads, buses] = await Promise.all([
           fetchSafe('/api/table/konya/buildings'),
           fetchSafe('/api/table/konya/pois'),
           fetchSafe('/api/table/konya/geogrid'),
           fetchSafe('/api/table/konya/indicators', []),
           fetchSafe('/api/table/konya/header', {}),
           fetchSafe('/api/table/konya/transport/bikes'),
-          fetchSafe('/api/table/konya/roads')
+          fetchSafe('/api/table/konya/roads'),
+          fetchSafe('/api/table/konya/transport/buses')
         ]);
 
         // Process Buildings
@@ -950,7 +966,17 @@
           type: f.properties.type
         }));
 
-        console.log(`✅ Veriler: Binalar=${buildingsData.length} Yollar=${roadsData.length} Bisiklet=${bikesData.length}`);
+        // Process Buses
+        busesData = (buses.features || []).map(f => ({
+          route: f.geometry.coordinates,
+          routeId: f.properties.id,
+          name: f.properties.name,
+          lineNumber: f.properties.line_number,
+          color: f.properties.color,
+          busCount: f.properties.buses
+        }));
+
+        console.log(`✅ Veriler: Binalar=${buildingsData.length} Yollar=${roadsData.length} Bisiklet=${bikesData.length} Otobüs Hatları=${busesData.length}`);
 
         // Update UI
         updateIndicatorsUI(indicators);
@@ -971,6 +997,11 @@
               }
             }, 100);
           }
+        }
+
+        // Auto-generate bus agents if bus routes exist
+        if (busesData.length > 0) {
+          generateBusAgents();
         }
 
       } catch (error) {
@@ -1003,6 +1034,40 @@
           speed: 0.008 + Math.random() * 0.008 // Faster flow
         });
       }
+    }
+
+    // Bus Simulation Logic
+    function generateBusAgents() {
+      if (busesData.length === 0) return;
+
+      busAgents = [];
+
+      // Create buses for each route
+      busesData.forEach((busRoute, routeIdx) => {
+        const route = busRoute.route;
+        const busCount = busRoute.busCount;
+
+        if (!route || route.length < 2) return;
+
+        // Distribute buses evenly along the route
+        for (let i = 0; i < busCount; i++) {
+          const startProgress = i / busCount; // Evenly space buses
+
+          busAgents.push({
+            routeIndex: routeIdx,
+            segmentIndex: 0,
+            progress: startProgress,
+            position: route[0],
+            trail: [route[0], route[0]],
+            speed: 0.003 + Math.random() * 0.002, // Slower than traffic
+            color: busRoute.color,
+            lineNumber: busRoute.lineNumber,
+            name: busRoute.name
+          });
+        }
+      });
+
+      console.log(`🚌 ${busAgents.length} otobüs oluşturuldu`);
     }
 
     function animateTraffic() {
@@ -1050,6 +1115,45 @@
           // Update trail (simple history)
           agent.trail = [agent.position, newPos];
           agent.position = newPos;
+        }
+      });
+
+      // Animate buses
+      busAgents.forEach(agent => {
+        const busRoute = busesData[agent.routeIndex];
+        if (!busRoute || !busRoute.route) return;
+
+        const route = busRoute.route;
+
+        // Move agent along route
+        agent.progress += agent.speed;
+
+        // Calculate total progress along entire route
+        const totalSegments = route.length - 1;
+        const totalProgress = agent.progress * totalSegments;
+        const segmentIndex = Math.floor(totalProgress) % totalSegments;
+        const segmentProgress = totalProgress - Math.floor(totalProgress);
+
+        agent.segmentIndex = segmentIndex;
+
+        // Interpolate position
+        const currentP1 = route[segmentIndex];
+        const currentP2 = route[(segmentIndex + 1) % route.length];
+
+        if (currentP1 && currentP2) {
+          const newPos = [
+            currentP1[0] + (currentP2[0] - currentP1[0]) * segmentProgress,
+            currentP1[1] + (currentP2[1] - currentP1[1]) * segmentProgress
+          ];
+
+          // Update trail
+          agent.trail = [agent.position, newPos];
+          agent.position = newPos;
+        }
+
+        // Loop the route
+        if (agent.progress >= 1) {
+          agent.progress = 0;
         }
       });
 
@@ -1248,6 +1352,105 @@
               tooltip.querySelector('.tooltip-content').innerHTML = `
                                  <strong>${info.object.name}</strong><br>
                              `;
+            } else {
+              tooltip.style.display = 'none';
+            }
+          }
+        }));
+      }
+
+      // Bus Routes Layer (Static Routes)
+      if (state.layers.buses && busesData.length > 0) {
+        layers.push(new deck.PathLayer({
+          id: 'bus-routes',
+          data: busesData,
+          pickable: true,
+          widthScale: 1,
+          widthMinPixels: 2,
+          getPath: d => d.route,
+          getColor: d => {
+            // Convert hex color to RGB
+            const hex = d.color.replace('#', '');
+            const r = parseInt(hex.substring(0, 2), 16);
+            const g = parseInt(hex.substring(2, 4), 16);
+            const b = parseInt(hex.substring(4, 6), 16);
+            return [r, g, b, 120];
+          },
+          getWidth: 4,
+          capRounded: true,
+          jointRounded: true,
+          opacity: 0.6,
+          onHover: info => {
+            const tooltip = document.getElementById('tooltip');
+            if (info.object) {
+              tooltip.style.display = 'block';
+              tooltip.style.left = info.x + 10 + 'px';
+              tooltip.style.top = info.y + 10 + 'px';
+              tooltip.querySelector('.tooltip-title').textContent = '🚌 Otobüs Hattı';
+              tooltip.querySelector('.tooltip-content').innerHTML = `
+                <strong>${info.object.lineNumber} - ${info.object.name}</strong><br>
+                Otobüs Sayısı: ${info.object.busCount}
+              `;
+            } else {
+              tooltip.style.display = 'none';
+            }
+          }
+        }));
+      }
+
+      // Bus Animation Layer
+      if (state.layers.buses && busAgents.length > 0) {
+        // Bus trails
+        layers.push(new deck.PathLayer({
+          id: 'bus-trails',
+          data: busAgents,
+          pickable: false,
+          widthScale: 1,
+          widthMinPixels: 2,
+          getPath: d => d.trail,
+          getColor: d => {
+            const hex = d.color.replace('#', '');
+            const r = parseInt(hex.substring(0, 2), 16);
+            const g = parseInt(hex.substring(2, 4), 16);
+            const b = parseInt(hex.substring(4, 6), 16);
+            return [r, g, b, 255];
+          },
+          getWidth: 3,
+          capRounded: true,
+          jointRounded: true
+        }));
+
+        // Bus heads (the actual buses)
+        layers.push(new deck.ScatterplotLayer({
+          id: 'bus-heads',
+          data: busAgents,
+          pickable: true,
+          radiusMinPixels: 5,
+          radiusMaxPixels: 10,
+          getPosition: d => d.position,
+          getRadius: 15,
+          getFillColor: d => {
+            const hex = d.color.replace('#', '');
+            const r = parseInt(hex.substring(0, 2), 16);
+            const g = parseInt(hex.substring(2, 4), 16);
+            const b = parseInt(hex.substring(4, 6), 16);
+            return [r, g, b, 255];
+          },
+          getLineColor: [255, 255, 255, 200],
+          getLineWidth: 2,
+          stroked: true,
+          filled: true,
+          onHover: info => {
+            const tooltip = document.getElementById('tooltip');
+            if (info.object) {
+              tooltip.style.display = 'block';
+              tooltip.style.left = info.x + 10 + 'px';
+              tooltip.style.top = info.y + 10 + 'px';
+              tooltip.querySelector('.tooltip-title').textContent = '🚌 Otobüs';
+              tooltip.querySelector('.tooltip-content').innerHTML = `
+                <strong>${info.object.lineNumber}</strong><br>
+                ${info.object.name}
+              `;
             } else {
               tooltip.style.display = 'none';
             }

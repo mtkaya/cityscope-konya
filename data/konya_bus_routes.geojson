@@ -1,0 +1,124 @@
+{
+  "type": "FeatureCollection",
+  "name": "konya_bus_routes",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "route_1",
+        "name": "M1 - Mevlana Hattı",
+        "line_number": "M1",
+        "color": "#E53935",
+        "buses": 8
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [32.48, 37.87],
+          [32.5, 37.87],
+          [32.52, 37.87],
+          [32.52, 37.88],
+          [32.5, 37.88],
+          [32.48, 37.88],
+          [32.48, 37.87]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "route_2",
+        "name": "A1 - Alaaddin Bulvarı Hattı",
+        "line_number": "A1",
+        "color": "#1E88E5",
+        "buses": 6
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [32.49, 37.86],
+          [32.49, 37.87],
+          [32.49, 37.88],
+          [32.49, 37.89],
+          [32.50, 37.89],
+          [32.50, 37.88],
+          [32.50, 37.87],
+          [32.49, 37.87],
+          [32.49, 37.86]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "route_3",
+        "name": "K1 - Konya Şehir İçi Hattı",
+        "line_number": "K1",
+        "color": "#43A047",
+        "buses": 10
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [32.44, 37.88],
+          [32.48, 37.88],
+          [32.52, 37.88],
+          [32.52, 37.87],
+          [32.50, 37.87],
+          [32.48, 37.87],
+          [32.46, 37.86],
+          [32.44, 37.86],
+          [32.44, 37.88]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "route_4",
+        "name": "G1 - Güney-Kuzey Hattı",
+        "line_number": "G1",
+        "color": "#FB8C00",
+        "buses": 7
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [32.46, 37.84],
+          [32.48, 37.86],
+          [32.5, 37.88],
+          [32.51, 37.89],
+          [32.50, 37.88],
+          [32.48, 37.86],
+          [32.46, 37.84]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "route_5",
+        "name": "D1 - Doğu-Batı Express",
+        "line_number": "D1",
+        "color": "#8E24AA",
+        "buses": 9
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [32.47, 37.87],
+          [32.48, 37.875],
+          [32.49, 37.88],
+          [32.50, 37.88],
+          [32.51, 37.875],
+          [32.52, 37.87],
+          [32.51, 37.865],
+          [32.50, 37.86],
+          [32.49, 37.86],
+          [32.48, 37.865],
+          [32.47, 37.87]
+        ]
+      }
+    }
+  ]
+}
