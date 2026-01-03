@@ -62,25 +62,3 @@ class WorkOrderItem(Base):
 
     work_order = relationship("WorkOrder", back_populates="items")
     inventory_item = relationship("InventoryItem")
-
-class TrafficDensity(Base):
-    __tablename__ = "traffic_density"
-
-    id = Column(Integer, primary_key=True, index=True)
-    latitude = Column(String, index=True)
-    longitude = Column(String, index=True)
-    density_score = Column(Integer)  # 0-100 scale
-    vehicle_count = Column(Integer)
-    analyzed_at = Column(DateTime(timezone=True), server_default=func.now())
-    satellite_image_id = Column(String, nullable=True)  # Sentinel Hub image reference
-
-class SatelliteImage(Base):
-    __tablename__ = "satellite_images"
-
-    id = Column(Integer, primary_key=True, index=True)
-    image_id = Column(String, unique=True, index=True)  # Sentinel Hub ID
-    bbox = Column(String)  # Bounding box coordinates (JSON string)
-    capture_time = Column(DateTime(timezone=True))
-    processed_at = Column(DateTime(timezone=True), server_default=func.now())
-    processing_status = Column(String, default="pending")  # pending, processing, completed, failed
-    vehicle_detections = Column(Integer, default=0)

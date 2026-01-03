@@ -54,32 +54,3 @@ class WorkOrder(WorkOrderBase):
 
     class Config:
         from_attributes = True
-
-# --- Traffic Analysis Schemas ---
-class TrafficDensityBase(BaseModel):
-    latitude: str
-    longitude: str
-    density_score: int
-    vehicle_count: int
-    satellite_image_id: Optional[str] = None
-
-class TrafficDensity(TrafficDensityBase):
-    id: int
-    analyzed_at: datetime
-
-    class Config:
-        from_attributes = True
-
-class SatelliteImageBase(BaseModel):
-    image_id: str
-    bbox: str
-    capture_time: datetime
-
-class SatelliteImage(SatelliteImageBase):
-    id: int
-    processed_at: datetime
-    processing_status: str
-    vehicle_detections: int
-
-    class Config:
-        from_attributes = True
