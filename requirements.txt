@@ -5,6 +5,9 @@
 flask>=2.3.0
 flask-cors>=4.0.0
 flask-socketio>=5.3.0
+fastapi>=0.104.0
+uvicorn>=0.24.0
+sqlalchemy>=2.0.0
 
 # Geospatial
 geopandas>=0.14.0
@@ -27,6 +30,17 @@ matplotlib>=3.7.0
 # Utilities
 python-dotenv>=1.0.0
 pyyaml>=6.0
+
+# AI/ML - Traffic Analysis
+ultralytics>=8.0.0  # YOLO for vehicle detection
+sentinelhub>=3.9.0  # Sentinel Hub API
+torch>=2.0.0  # PyTorch for YOLO
+torchvision>=0.15.0
+opencv-python>=4.8.0  # Image processing
+pillow>=10.0.0  # Image manipulation
+
+# Task Scheduling
+apscheduler>=3.10.0  # Hourly satellite image processing
 
 # Development
 pytest>=7.4.0
