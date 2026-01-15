@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOM Dijital İkiz - Canlı Harita</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Leaflet CSS & JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+
+        /* Map container */
+        #map {
+            height: 100vh;
+            width: 100%;
+            background: #0f172a;
+        }
+
+        /* Dark map tiles */
+        .leaflet-tile-pane { filter: saturate(0.3) brightness(0.4) contrast(1.2); }
+
+        /* Custom animations */
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); opacity: 1; }
+            100% { transform: scale(2.5); opacity: 0; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        @keyframes data-flow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        @keyframes slide-up {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes count-up {
+            from { opacity: 0; transform: scale(0.5); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes rotate-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes wave {
+            0%, 100% { transform: scaleY(1); }
+            50% { transform: scaleY(0.5); }
+        }
+
+        .animate-pulse-ring {
+            animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .animate-data-flow {
+            background: linear-gradient(90deg, transparent, rgba(59,130,246,0.5), transparent);
+            background-size: 200% 100%;
+            animation: data-flow 2s linear infinite;
+        }
+
+        .animate-blink {
+            animation: blink 1s ease-in-out infinite;
+        }
+
+        .animate-slide-up {
+            animation: slide-up 0.5s ease-out forwards;
+        }
+
+        .animate-rotate-slow {
+            animation: rotate-slow 10s linear infinite;
+        }
+
+        /* Custom marker styles */
+        .custom-marker {
+            position: relative;
+        }
+
+        .marker-pulse {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(59, 130, 246, 0.3);
+            animation: pulse-ring 2s infinite;
+        }
+
+        .marker-dot {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            border: 3px solid white;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+        }
+
+        /* Vehicle marker */
+        .vehicle-marker {
+            background: none;
+            border: none;
+        }
+
+        .vehicle-icon {
+            font-size: 24px;
+            filter: drop-shadow(0 0 10px rgba(34, 197, 94, 0.5));
+        }
+
+        /* Panel glass effect */
+        .glass {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); }
+        ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.3); }
+
+        /* Stats card hover */
+        .stat-card {
+            transition: all 0.3s ease;
+        }
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(59, 130, 246, 0.2);
+        }
+
+        /* Activity item */
+        .activity-item {
+            transition: all 0.3s ease;
+        }
+        .activity-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateX(4px);
+        }
+
+        /* Progress bar animation */
+        .progress-bar {
+            position: relative;
+            overflow: hidden;
+        }
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: data-flow 2s linear infinite;
+        }
+
+        /* Wave bars */
+        .wave-bar {
+            animation: wave 1s ease-in-out infinite;
+        }
+
+        /* Leaflet popup custom */
+        .leaflet-popup-content-wrapper {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: white;
+        }
+        .leaflet-popup-tip {
+            background: rgba(15, 23, 42, 0.95);
+        }
+        .leaflet-popup-close-button {
+            color: white !important;
+        }
+    </style>
+</head>
+<body class="bg-slate-900 overflow-hidden">
+
+    <!-- Main Container -->
+    <div class="relative h-screen w-full flex">
+
+        <!-- Left Sidebar -->
+        <aside class="absolute left-0 top-0 bottom-0 w-80 z-[1000] flex flex-col gap-4 p-4 overflow-y-auto">
+
+            <!-- Logo & Title -->
+            <div class="glass rounded-2xl p-4 animate-slide-up" style="animation-delay: 0.1s;">
+                <div class="flex items-center gap-3">
+                    <div class="relative">
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
+                            </svg>
+                        </div>
+                        <div class="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-slate-900 animate-pulse"></div>
+                    </div>
+                    <div>
+                        <h1 class="text-white font-bold text-lg">TOM Dijital İkiz</h1>
+                        <p class="text-gray-400 text-xs">Konya Büyükşehir Belediyesi</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Live Stats -->
+            <div class="glass rounded-2xl p-4 animate-slide-up" style="animation-delay: 0.2s;">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-white font-semibold text-sm">Anlık Durum</h2>
+                    <div class="flex items-center gap-1.5">
+                        <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                        <span class="text-green-400 text-xs font-medium">CANLI</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div class="stat-card bg-gradient-to-br from-blue-500/20 to-blue-600/10 rounded-xl p-3 border border-blue-500/20">
+                        <div class="text-2xl font-black text-blue-400" id="active-vehicles">127</div>
+                        <div class="text-xs text-gray-400">Aktif Araç</div>
+                    </div>
+                    <div class="stat-card bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 rounded-xl p-3 border border-emerald-500/20">
+                        <div class="text-2xl font-black text-emerald-400" id="workshops-active">18</div>
+                        <div class="text-xs text-gray-400">Çalışan Atölye</div>
+                    </div>
+                    <div class="stat-card bg-gradient-to-br from-amber-500/20 to-amber-600/10 rounded-xl p-3 border border-amber-500/20">
+                        <div class="text-2xl font-black text-amber-400" id="work-orders">43</div>
+                        <div class="text-xs text-gray-400">Açık İş Emri</div>
+                    </div>
+                    <div class="stat-card bg-gradient-to-br from-purple-500/20 to-purple-600/10 rounded-xl p-3 border border-purple-500/20">
+                        <div class="text-2xl font-black text-purple-400" id="efficiency">94%</div>
+                        <div class="text-xs text-gray-400">Verimlilik</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Workshop Filter -->
+            <div class="glass rounded-2xl p-4 animate-slide-up" style="animation-delay: 0.3s;">
+                <h2 class="text-white font-semibold text-sm mb-3">Atölye Filtresi</h2>
+                <div class="space-y-2">
+                    <label class="flex items-center gap-3 p-2 rounded-lg hover:bg-white/5 cursor-pointer transition-colors">
+                        <input type="checkbox" checked class="w-4 h-4 rounded border-gray-600 bg-gray-700 text-blue-500 focus:ring-blue-500">
+                        <span class="flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-blue-500"></span>
+                            <span class="text-gray-300 text-sm">Tatlıcak Garajı</span>
+                        </span>
+                        <span class="ml-auto text-xs text-gray-500">24</span>
+                    </label>
+                    <label class="flex items-center gap-3 p-2 rounded-lg hover:bg-white/5 cursor-pointer transition-colors">
+                        <input type="checkbox" checked class="w-4 h-4 rounded border-gray-600 bg-gray-700 text-emerald-500 focus:ring-emerald-500">
+                        <span class="flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+                            <span class="text-gray-300 text-sm">Yazır Garajı</span>
+                        </span>
+                        <span class="ml-auto text-xs text-gray-500">18</span>
+                    </label>
+                    <label class="flex items-center gap-3 p-2 rounded-lg hover:bg-white/5 cursor-pointer transition-colors">
+                        <input type="checkbox" checked class="w-4 h-4 rounded border-gray-600 bg-gray-700 text-amber-500 focus:ring-amber-500">
+                        <span class="flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-amber-500"></span>
+                            <span class="text-gray-300 text-sm">Meram Garajı</span>
+                        </span>
+                        <span class="ml-auto text-xs text-gray-500">15</span>
+                    </label>
+                    <label class="flex items-center gap-3 p-2 rounded-lg hover:bg-white/5 cursor-pointer transition-colors">
+                        <input type="checkbox" checked class="w-4 h-4 rounded border-gray-600 bg-gray-700 text-rose-500 focus:ring-rose-500">
+                        <span class="flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-rose-500"></span>
+                            <span class="text-gray-300 text-sm">Alakova Garajı</span>
+                        </span>
+                        <span class="ml-auto text-xs text-gray-500">12</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Layer Controls -->
+            <div class="glass rounded-2xl p-4 animate-slide-up" style="animation-delay: 0.4s;">
+                <h2 class="text-white font-semibold text-sm mb-3">Katmanlar</h2>
+                <div class="space-y-2">
+                    <button class="layer-btn w-full flex items-center gap-3 p-2.5 rounded-xl bg-blue-500/20 border border-blue-500/30 text-blue-400 transition-all hover:bg-blue-500/30" data-layer="vehicles">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
+                        </svg>
+                        <span class="text-sm font-medium">Araç Hareketleri</span>
+                        <span class="ml-auto w-2 h-2 bg-blue-400 rounded-full animate-pulse"></span>
+                    </button>
+                    <button class="layer-btn w-full flex items-center gap-3 p-2.5 rounded-xl bg-white/5 border border-white/10 text-gray-400 transition-all hover:bg-white/10" data-layer="workshops">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                        </svg>
+                        <span class="text-sm font-medium">Atölyeler</span>
+                    </button>
+                    <button class="layer-btn w-full flex items-center gap-3 p-2.5 rounded-xl bg-white/5 border border-white/10 text-gray-400 transition-all hover:bg-white/10" data-layer="routes">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path>
+                        </svg>
+                        <span class="text-sm font-medium">Güzergahlar</span>
+                    </button>
+                    <button class="layer-btn w-full flex items-center gap-3 p-2.5 rounded-xl bg-white/5 border border-white/10 text-gray-400 transition-all hover:bg-white/10" data-layer="heatmap">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"></path>
+                        </svg>
+                        <span class="text-sm font-medium">Yoğunluk Haritası</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Real-time Activity -->
+            <div class="glass rounded-2xl p-4 flex-1 animate-slide-up" style="animation-delay: 0.5s;">
+                <div class="flex items-center justify-between mb-3">
+                    <h2 class="text-white font-semibold text-sm">Canlı Aktivite</h2>
+                    <div class="flex gap-0.5">
+                        <div class="wave-bar w-1 h-4 bg-blue-500 rounded-full" style="animation-delay: 0s;"></div>
+                        <div class="wave-bar w-1 h-4 bg-blue-500 rounded-full" style="animation-delay: 0.1s;"></div>
+                        <div class="wave-bar w-1 h-4 bg-blue-500 rounded-full" style="animation-delay: 0.2s;"></div>
+                        <div class="wave-bar w-1 h-4 bg-blue-500 rounded-full" style="animation-delay: 0.3s;"></div>
+                    </div>
+                </div>
+                <div class="space-y-2 max-h-60 overflow-y-auto" id="activity-feed">
+                    <!-- Activities will be injected -->
+                </div>
+            </div>
+
+        </aside>
+
+        <!-- Map Container -->
+        <div id="map" class="flex-1"></div>
+
+        <!-- Right Info Panel -->
+        <aside class="absolute right-4 top-4 w-72 z-[1000] space-y-4">
+
+            <!-- Performance Gauge -->
+            <div class="glass rounded-2xl p-4 animate-slide-up" style="animation-delay: 0.3s;">
+                <h2 class="text-white font-semibold text-sm mb-4">Sistem Performansı</h2>
+                <div class="relative w-32 h-32 mx-auto mb-4">
+                    <svg class="w-full h-full transform -rotate-90">
+                        <circle cx="64" cy="64" r="56" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="12"/>
+                        <circle cx="64" cy="64" r="56" fill="none" stroke="url(#gradient)" stroke-width="12"
+                                stroke-dasharray="352" stroke-dashoffset="35" stroke-linecap="round"
+                                class="transition-all duration-1000"/>
+                    </svg>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="text-center">
+                            <div class="text-3xl font-black text-white">90%</div>
+                            <div class="text-xs text-gray-400">Verimlilik</div>
+                        </div>
+                    </div>
+                    <svg width="0" height="0">
+                        <defs>
+                            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#3b82f6"/>
+                                <stop offset="100%" style="stop-color:#8b5cf6"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <div class="space-y-3">
+                    <div>
+                        <div class="flex justify-between text-xs mb-1">
+                            <span class="text-gray-400">CPU Kullanımı</span>
+                            <span class="text-white font-medium">42%</span>
+                        </div>
+                        <div class="h-1.5 bg-white/10 rounded-full overflow-hidden">
+                            <div class="progress-bar h-full w-[42%] bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-xs mb-1">
+                            <span class="text-gray-400">Bellek</span>
+                            <span class="text-white font-medium">68%</span>
+                        </div>
+                        <div class="h-1.5 bg-white/10 rounded-full overflow-hidden">
+                            <div class="progress-bar h-full w-[68%] bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-xs mb-1">
+                            <span class="text-gray-400">Ağ Trafiği</span>
+                            <span class="text-white font-medium">23%</span>
+                        </div>
+                        <div class="h-1.5 bg-white/10 rounded-full overflow-hidden">
+                            <div class="progress-bar h-full w-[23%] bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="glass rounded-2xl p-4 animate-slide-up" style="animation-delay: 0.4s;">
+                <h2 class="text-white font-semibold text-sm mb-3">Hızlı İşlemler</h2>
+                <div class="grid grid-cols-2 gap-2">
+                    <button class="p-3 rounded-xl bg-blue-500/20 border border-blue-500/30 text-blue-400 hover:bg-blue-500/30 transition-all group">
+                        <svg class="w-6 h-6 mx-auto mb-1 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                        </svg>
+                        <span class="text-xs">Yeni İş Emri</span>
+                    </button>
+                    <button class="p-3 rounded-xl bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/30 transition-all group">
+                        <svg class="w-6 h-6 mx-auto mb-1 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                        <span class="text-xs">Rapor</span>
+                    </button>
+                    <button class="p-3 rounded-xl bg-amber-500/20 border border-amber-500/30 text-amber-400 hover:bg-amber-500/30 transition-all group">
+                        <svg class="w-6 h-6 mx-auto mb-1 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+                        </svg>
+                        <span class="text-xs">Uyarılar</span>
+                    </button>
+                    <button class="p-3 rounded-xl bg-purple-500/20 border border-purple-500/30 text-purple-400 hover:bg-purple-500/30 transition-all group">
+                        <svg class="w-6 h-6 mx-auto mb-1 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                        <span class="text-xs">Ayarlar</span>
+                    </button>
+                </div>
+            </div>
+
+        </aside>
+
+        <!-- Bottom Stats Bar -->
+        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-[1000] glass rounded-2xl px-6 py-3 flex items-center gap-8 animate-slide-up" style="animation-delay: 0.6s;">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-blue-500/20 flex items-center justify-center">
+                    <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                    </svg>
+                </div>
+                <div>
+                    <div class="text-xs text-gray-400">Bugün Tamamlanan</div>
+                    <div class="text-lg font-bold text-white">156 İş Emri</div>
+                </div>
+            </div>
+            <div class="w-px h-10 bg-white/10"></div>
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-emerald-500/20 flex items-center justify-center">
+                    <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <div class="text-xs text-gray-400">Günlük Tasarruf</div>
+                    <div class="text-lg font-bold text-white">₺45,230</div>
+                </div>
+            </div>
+            <div class="w-px h-10 bg-white/10"></div>
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-amber-500/20 flex items-center justify-center">
+                    <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <div class="text-xs text-gray-400">Ort. Bakım Süresi</div>
+                    <div class="text-lg font-bold text-white">2.4 Saat</div>
+                </div>
+            </div>
+            <div class="w-px h-10 bg-white/10"></div>
+            <div class="flex items-center gap-2">
+                <span class="text-xs text-gray-400">Son güncelleme:</span>
+                <span class="text-xs text-white font-mono" id="last-update">--:--:--</span>
+                <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Initialize Map
+        const map = L.map('map', {
+            zoomControl: false,
+            attributionControl: false
+        }).setView([37.8746, 32.4932], 12);
+
+        // Dark tile layer
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            maxZoom: 19
+        }).addTo(map);
+
+        // Add zoom control to bottom right
+        L.control.zoom({ position: 'bottomright' }).addTo(map);
+
+        // Workshop locations (Garajlar)
+        const workshops = [
+            { name: "Tatlıcak Garajı", lat: 37.9012, lng: 32.4523, color: "#3b82f6", vehicles: 24, status: "active" },
+            { name: "Yazır Garajı", lat: 37.8534, lng: 32.5123, color: "#10b981", vehicles: 18, status: "active" },
+            { name: "Meram Garajı", lat: 37.8456, lng: 32.4423, color: "#f59e0b", vehicles: 15, status: "active" },
+            { name: "Alakova Garajı", lat: 37.8823, lng: 32.5234, color: "#ef4444", vehicles: 12, status: "maintenance" },
+            { name: "Selçuklu Merkez", lat: 37.8812, lng: 32.4756, color: "#8b5cf6", vehicles: 20, status: "active" },
+            { name: "Karatay Garajı", lat: 37.8732, lng: 32.4985, color: "#06b6d4", vehicles: 16, status: "active" }
+        ];
+
+        // Create custom workshop markers
+        workshops.forEach(workshop => {
+            const markerHtml = `
+                <div class="relative">
+                    <div class="absolute w-12 h-12 rounded-full animate-pulse-ring" style="background: ${workshop.color}33; left: -6px; top: -6px;"></div>
+                    <div class="w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold text-sm shadow-lg" style="background: linear-gradient(135deg, ${workshop.color}, ${workshop.color}cc);">
+                        ${workshop.vehicles}
+                    </div>
+                </div>
+            `;
+
+            const icon = L.divIcon({
+                html: markerHtml,
+                className: 'custom-marker',
+                iconSize: [40, 40],
+                iconAnchor: [20, 20]
+            });
+
+            const marker = L.marker([workshop.lat, workshop.lng], { icon }).addTo(map);
+
+            marker.bindPopup(`
+                <div class="p-2">
+                    <h3 class="font-bold text-lg mb-2">${workshop.name}</h3>
+                    <div class="space-y-1 text-sm">
+                        <div class="flex justify-between">
+                            <span class="text-gray-400">Araç Sayısı:</span>
+                            <span class="font-bold">${workshop.vehicles}</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-400">Durum:</span>
+                            <span class="font-bold ${workshop.status === 'active' ? 'text-green-400' : 'text-amber-400'}">${workshop.status === 'active' ? 'Aktif' : 'Bakımda'}</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-400">Doluluk:</span>
+                            <span class="font-bold">${Math.round(workshop.vehicles / 30 * 100)}%</span>
+                        </div>
+                    </div>
+                </div>
+            `, { className: 'custom-popup' });
+        });
+
+        // Simulated moving vehicles
+        const vehicleIcons = ['🚌', '🚐', '🚛', '🚚', '🚎'];
+        const vehicles = [];
+
+        for (let i = 0; i < 30; i++) {
+            const baseLat = 37.8746 + (Math.random() - 0.5) * 0.08;
+            const baseLng = 32.4932 + (Math.random() - 0.5) * 0.1;
+
+            const vehicleHtml = `
+                <div class="vehicle-icon text-2xl" style="filter: drop-shadow(0 0 8px rgba(34, 197, 94, 0.6));">
+                    ${vehicleIcons[Math.floor(Math.random() * vehicleIcons.length)]}
+                </div>
+            `;
+
+            const icon = L.divIcon({
+                html: vehicleHtml,
+                className: 'vehicle-marker',
+                iconSize: [30, 30],
+                iconAnchor: [15, 15]
+            });
+
+            const marker = L.marker([baseLat, baseLng], { icon }).addTo(map);
+
+            vehicles.push({
+                marker,
+                baseLat,
+                baseLng,
+                speed: 0.0001 + Math.random() * 0.0002,
+                angle: Math.random() * Math.PI * 2,
+                plate: `42 ${String.fromCharCode(65 + Math.floor(Math.random() * 26))}${String.fromCharCode(65 + Math.floor(Math.random() * 26))} ${100 + Math.floor(Math.random() * 900)}`
+            });
+
+            marker.bindPopup(`
+                <div class="p-2">
+                    <h3 class="font-bold text-lg mb-2">${vehicles[i].plate}</h3>
+                    <div class="space-y-1 text-sm">
+                        <div class="flex justify-between gap-4">
+                            <span class="text-gray-400">Hız:</span>
+                            <span class="font-bold text-green-400">${Math.floor(Math.random() * 60 + 20)} km/s</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-400">Durum:</span>
+                            <span class="font-bold text-blue-400">Seferde</span>
+                        </div>
+                    </div>
+                </div>
+            `);
+        }
+
+        // Animate vehicles
+        function animateVehicles() {
+            vehicles.forEach(v => {
+                v.angle += (Math.random() - 0.5) * 0.1;
+                const newLat = v.marker.getLatLng().lat + Math.sin(v.angle) * v.speed;
+                const newLng = v.marker.getLatLng().lng + Math.cos(v.angle) * v.speed;
+                v.marker.setLatLng([newLat, newLng]);
+            });
+            requestAnimationFrame(animateVehicles);
+        }
+        animateVehicles();
+
+        // Activity feed
+        const activities = [
+            { type: 'success', icon: '✅', text: '42 ABC 123 bakımı tamamlandı', time: '2 dk önce' },
+            { type: 'warning', icon: '⚠️', text: 'Tatlıcak Garajı doluluk %85', time: '5 dk önce' },
+            { type: 'info', icon: '🔧', text: '42 XYZ 789 için iş emri açıldı', time: '8 dk önce' },
+            { type: 'success', icon: '🚌', text: '3 araç sefere çıktı', time: '12 dk önce' },
+            { type: 'info', icon: '📦', text: 'Stok transferi: Yazır → Meram', time: '15 dk önce' },
+            { type: 'warning', icon: '🔋', text: '42 DEF 456 akü değişimi gerekli', time: '20 dk önce' },
+            { type: 'success', icon: '📊', text: 'Günlük rapor oluşturuldu', time: '25 dk önce' },
+        ];
+
+        const activityFeed = document.getElementById('activity-feed');
+
+        function renderActivities() {
+            activityFeed.innerHTML = activities.map((a, i) => `
+                <div class="activity-item flex items-start gap-3 p-2 rounded-lg cursor-pointer animate-slide-up" style="animation-delay: ${i * 0.1}s;">
+                    <span class="text-lg">${a.icon}</span>
+                    <div class="flex-1 min-w-0">
+                        <p class="text-sm text-gray-300 truncate">${a.text}</p>
+                        <p class="text-xs text-gray-500">${a.time}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+        renderActivities();
+
+        // Add new activity periodically
+        const newActivities = [
+            { type: 'success', icon: '✅', text: 'Motor yağı değişimi tamamlandı' },
+            { type: 'info', icon: '🚐', text: 'Yeni araç sisteme eklendi' },
+            { type: 'warning', icon: '⏰', text: 'Periyodik bakım hatırlatması' },
+            { type: 'success', icon: '💰', text: 'Maliyet optimizasyonu sağlandı' },
+        ];
+
+        setInterval(() => {
+            const newActivity = {
+                ...newActivities[Math.floor(Math.random() * newActivities.length)],
+                time: 'Şimdi'
+            };
+            activities.unshift(newActivity);
+            if (activities.length > 10) activities.pop();
+            renderActivities();
+        }, 8000);
+
+        // Update stats
+        function updateStats() {
+            document.getElementById('active-vehicles').textContent = 120 + Math.floor(Math.random() * 15);
+            document.getElementById('workshops-active').textContent = 16 + Math.floor(Math.random() * 4);
+            document.getElementById('work-orders').textContent = 40 + Math.floor(Math.random() * 10);
+        }
+        setInterval(updateStats, 5000);
+
+        // Update time
+        function updateTime() {
+            const now = new Date();
+            document.getElementById('last-update').textContent = now.toLocaleTimeString('tr-TR');
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+
+        // Layer button toggles
+        document.querySelectorAll('.layer-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const isActive = btn.classList.contains('bg-blue-500/20');
+                if (isActive) {
+                    btn.classList.remove('bg-blue-500/20', 'border-blue-500/30', 'text-blue-400');
+                    btn.classList.add('bg-white/5', 'border-white/10', 'text-gray-400');
+                    btn.querySelector('span:last-child')?.remove();
+                } else {
+                    btn.classList.add('bg-blue-500/20', 'border-blue-500/30', 'text-blue-400');
+                    btn.classList.remove('bg-white/5', 'border-white/10', 'text-gray-400');
+                    const dot = document.createElement('span');
+                    dot.className = 'ml-auto w-2 h-2 bg-blue-400 rounded-full animate-pulse';
+                    btn.appendChild(dot);
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

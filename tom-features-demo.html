@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOM Dijital İkiz Platformu - Özellikler</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+
+        /* Custom animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.5); }
+        }
+
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .animate-float { animation: float 3s ease-in-out infinite; }
+        .animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+
+        .gradient-animate {
+            background-size: 200% 200%;
+            animation: gradient-shift 3s ease infinite;
+        }
+
+        .feature-card {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px) scale(1.02);
+        }
+
+        .feature-card:hover .icon-wrapper {
+            transform: scale(1.15) rotate(5deg);
+        }
+
+        .feature-card:hover .value-box {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .feature-card:hover .arrow-indicator {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .feature-card:hover .glow-effect {
+            opacity: 0.2;
+        }
+
+        .icon-wrapper {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .value-box {
+            opacity: 0.7;
+            transform: translateY(4px);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .arrow-indicator {
+            opacity: 0;
+            transform: translateX(-8px);
+            transition: all 0.3s ease;
+        }
+
+        .glow-effect {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        /* Staggered animation on load */
+        .feature-card {
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .stat-card {
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-b from-gray-50 via-white to-gray-50 min-h-screen">
+
+    <!-- Background decorations -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute -top-40 -right-40 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-40"></div>
+        <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-purple-100 rounded-full blur-3xl opacity-40"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-gradient-to-r from-blue-50 to-purple-50 rounded-full blur-3xl opacity-50"></div>
+    </div>
+
+    <section class="relative py-16 md:py-24 px-4 overflow-hidden">
+        <div class="relative max-w-7xl mx-auto">
+
+            <!-- Header -->
+            <div class="text-center mb-12 md:mb-16">
+                <!-- Badge -->
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-100 to-purple-100 text-blue-700 text-sm font-semibold mb-6 animate-float">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                    </svg>
+                    <span>Dijital Dönüşümün Kalbi</span>
+                </div>
+
+                <!-- Title -->
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-6">
+                    TOM Dijital İkiz
+                    <span class="block mt-2 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 bg-clip-text text-transparent gradient-animate">
+                        Platform Yetkinlikleri
+                    </span>
+                </h1>
+
+                <!-- Description -->
+                <p class="max-w-3xl mx-auto text-lg md:text-xl text-gray-600 leading-relaxed">
+                    Araç, atölye, stok ve bakım süreçlerini sadece izleyen değil;
+                    <strong class="text-gray-900">anlayan, analiz eden ve yönetime karar desteği sunan</strong>
+                    akıllı bir yönetim altyapısı.
+                </p>
+            </div>
+
+            <!-- Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-12 md:mb-16">
+                <div class="stat-card text-center p-4 md:p-6 rounded-2xl bg-gradient-to-br from-white to-gray-50 border border-gray-100 shadow-sm hover:shadow-lg">
+                    <div class="text-3xl md:text-4xl font-black bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">17</div>
+                    <div class="text-xs md:text-sm text-gray-600 font-medium">Dijital İkiz Modülü</div>
+                </div>
+                <div class="stat-card text-center p-4 md:p-6 rounded-2xl bg-gradient-to-br from-white to-gray-50 border border-gray-100 shadow-sm hover:shadow-lg">
+                    <div class="text-3xl md:text-4xl font-black bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">24</div>
+                    <div class="text-xs md:text-sm text-gray-600 font-medium">Atölye Entegrasyonu</div>
+                </div>
+                <div class="stat-card text-center p-4 md:p-6 rounded-2xl bg-gradient-to-br from-white to-gray-50 border border-gray-100 shadow-sm hover:shadow-lg">
+                    <div class="text-3xl md:text-4xl font-black bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">7/24</div>
+                    <div class="text-xs md:text-sm text-gray-600 font-medium">Gerçek Zamanlı İzleme</div>
+                </div>
+                <div class="stat-card text-center p-4 md:p-6 rounded-2xl bg-gradient-to-br from-white to-gray-50 border border-gray-100 shadow-sm hover:shadow-lg">
+                    <div class="text-3xl md:text-4xl font-black bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">%100</div>
+                    <div class="text-xs md:text-sm text-gray-600 font-medium">Yerli Çözüm</div>
+                </div>
+            </div>
+
+            <!-- Features Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6" id="features-grid">
+                <!-- Features will be injected by JavaScript -->
+            </div>
+
+            <!-- CTA Section -->
+            <div class="mt-16 md:mt-20 text-center">
+                <div class="inline-flex flex-col sm:flex-row items-center gap-4">
+                    <button class="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-2xl shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40 transition-all duration-300 hover:-translate-y-1">
+                        <span class="relative z-10 flex items-center gap-2">
+                            Demo Talep Et
+                            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </span>
+                    </button>
+                    <button class="px-8 py-4 text-gray-700 font-bold rounded-2xl border-2 border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-all duration-300">
+                        Teknik Dokümanlar
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <script>
+        const features = [
+            {
+                icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"></path></svg>`,
+                title: "Gerçek Zamanlı Araç Takibi",
+                capability: "Atölye ve garajlara giren araçların anlık durumunun dijital ikizi",
+                value: "Bekleme süreleri azalır, darboğazlar görünür hale gelir",
+                bgColor: "bg-blue-50",
+                iconColor: "text-blue-600",
+                gradient: "from-blue-500 to-blue-600"
+            },
+            {
+                icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`,
+                title: "Araç Yaşam Döngüsü Yönetimi",
+                capability: "Araçların girişten çıkışa tüm bakım-onarım sürecinin izlenmesi",
+                value: "Plansız iş emirleri ve tekrar eden arızalar düşer",
+                bgColor: "bg-emerald-50",
+                iconColor: "text-emerald-600",
+                gradient: "from-emerald-500 to-emerald-600"
+            },
+            {
+                icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>`,
+                title: "Akıllı Atölye Haritası",
+                capability: "24 atölye ve posta yapısının dijital ortamda modellenmesi",
+                value: "Fiziksel karmaşa dijitalde sadeleşir",
+                bgColor: "bg-violet-50",
+                iconColor: "text-violet-600",
+                gradient: "from-violet-500 to-violet-600"
+            },
+            {
+                icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>`,
+                title: "İş Emri Dijital İkizi",
+                capability: "Her iş emrinin zaman, maliyet ve kaynak bazlı izlenmesi",
+                value: "Gerçek maliyetler netleşir",
+                bgColor: "bg-orange-50",
+                iconColor: "text-orange-600",
+                gradient: "from-orange-500 to-orange-600"
+            },
+            {
+                icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>`,
+                title: "Stok & Envanter Dijital İkizi",
+                capability: "Yedek parça, sarf malzeme ve stok hareketlerinin canlı takibi",
+                value: "Fazla stok ve kritik eksiklerin önüne geçilir",
+                bgColor: "bg-cyan-50",
+                iconColor: "text-cyan-600",
+                gradient: "from-cyan-500 to-cyan-600"
+            },
+            {
+                icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"></path></svg>`,
+                title: "Barkod & QR Entegrasyonu",
+                capability: "Parça–araç–iş emri ilişkisinin barkodla kurulması",
+                value: "Manuel hata oranı düşer",
+                bgColor: "bg-pink-50",
+                iconColor: "text-pink-600",
+                gradient: "from-pink-500 to-pink-600"
+            },
+            {
+                icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>`,
+                title: "Hurda Karar Mekanizması",
+                capability: "Hurda tespit sürecinin dijital kayıt ve komisyon yapısı",
+                value: "Şeffaf ve denetlenebilir karar alma",
+                bgColor: "bg-red-50",
+                iconColor: "text-red-600",
+                gradient: "from-red-500 to-red-600"
+            },
+            {
+                icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`,
+                title: "Kalite Kontrol Dijital Kayıtları",
+                capability: "Yapılan işlemlerin kalite standartlarına göre izlenmesi",
+                value: "Standart dışı işler erken yakalanır",
+                bgColor: "bg-teal-50",
+                iconColor: "text-teal-600",
+                gradient: "from-teal-500 to-teal-600"
+            },
+            {
+                icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"></path></svg>`,
+                title: "Akaryakıt Dijital İkizi",
+                capability: "Araç bazlı yakıt tüketiminin analiz edilmesi",
+                value: "Yıllık yakıt maliyetlerinde ciddi tasarruf",
+                bgColor: "bg-amber-50",
+                iconColor: "text-amber-600",
+                gradient: "from-amber-500 to-amber-600"
+            },
+            {
+                icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>`,
+                title: "Garaj & Lokasyon Bazlı Analiz",
+                capability: "Tatlıcak, Yazır, Meram, Alakova vb. lokasyon karşılaştırmaları",
+                value: "Veriye dayalı yönetim",
+                bgColor: "bg-indigo-50",
+                iconColor: "text-indigo-600",
+                gradient: "from-indigo-500 to-indigo-600"
+            },
+            {
+                icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`,
+                title: "Zaman & Performans Analitiği",
+                capability: "Atölye, posta ve personel bazlı süre analizleri",
+                value: "İş gücü verimliliği artar",
+                bgColor: "bg-lime-50",
+                iconColor: "text-lime-600",
+                gradient: "from-lime-500 to-lime-600"
+            },
+            {
+                icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>`,
+                title: "Senaryo & Simülasyon",
+                capability: '"Eğer bu araç şu atölyeye girseydi ne olurdu?" simülasyonları',
+                value: "Stratejik karar desteği",
+                bgColor: "bg-purple-50",
+                iconColor: "text-purple-600",
+                gradient: "from-purple-500 to-purple-600"
+            },
+            {
+                icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>`,
+                title: "Raporlama & Görselleştirme",
+                capability: "PDF, Excel ve yönetici panelleri",
+                value: "Yöneticiye net, sade bilgi",
+                bgColor: "bg-sky-50",
+                iconColor: "text-sky-600",
+                gradient: "from-sky-500 to-sky-600"
+            },
+            {
+                icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>`,
+                title: "Yetkilendirme & Güvenlik",
+                capability: "Rol bazlı erişim, kayıt ve loglama",
+                value: "Kurumsal güvenlik",
+                bgColor: "bg-slate-50",
+                iconColor: "text-slate-600",
+                gradient: "from-slate-500 to-slate-600"
+            },
+            {
+                icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path></svg>`,
+                title: "Modüler Mimari",
+                capability: "İhtiyaca göre açılıp kapanabilen modüller",
+                value: "Ölçeklenebilir yapı",
+                bgColor: "bg-fuchsia-50",
+                iconColor: "text-fuchsia-600",
+                gradient: "from-fuchsia-500 to-fuchsia-600"
+            },
+            {
+                icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`,
+                title: "Platform Bağımsız Yapı",
+                capability: "Belirli bir firmaya veya yazılıma bağımlı olmadan çalışır",
+                value: "Kurum kontrolü elinde tutar",
+                bgColor: "bg-rose-50",
+                iconColor: "text-rose-600",
+                gradient: "from-rose-500 to-rose-600"
+            },
+            {
+                icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>`,
+                title: "Dijital Dönüşüm Uyumu",
+                capability: "TOM Dijital Dönüşüm Yol Haritası ile birebir uyum",
+                value: "Sürdürülebilir dönüşüm",
+                bgColor: "bg-gradient-to-r from-blue-50 to-purple-50",
+                iconColor: "text-blue-600",
+                gradient: "from-blue-500 to-purple-600"
+            }
+        ];
+
+        const featuresGrid = document.getElementById('features-grid');
+
+        features.forEach((feature, index) => {
+            const card = document.createElement('div');
+            card.className = 'feature-card relative overflow-hidden rounded-2xl bg-white p-6 border border-gray-100 shadow-sm hover:shadow-2xl hover:border-transparent cursor-pointer';
+            card.style.animationDelay = `${index * 80}ms`;
+
+            card.innerHTML = `
+                <!-- Gradient overlay -->
+                <div class="absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
+
+                <!-- Icon -->
+                <div class="icon-wrapper relative inline-flex items-center justify-center w-14 h-14 rounded-xl ${feature.bgColor} ${feature.iconColor} mb-4">
+                    ${feature.icon}
+                    <div class="glow-effect absolute inset-0 rounded-xl bg-gradient-to-br ${feature.gradient} blur-xl"></div>
+                </div>
+
+                <!-- Title -->
+                <h3 class="text-lg font-bold text-gray-900 mb-3">
+                    ${feature.title}
+                </h3>
+
+                <!-- Capability -->
+                <p class="text-sm text-gray-600 mb-4 leading-relaxed">
+                    ${feature.capability}
+                </p>
+
+                <!-- Value -->
+                <div class="value-box flex items-start gap-2 p-3 rounded-xl ${feature.bgColor}">
+                    <svg class="w-4 h-4 ${feature.iconColor} flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                    </svg>
+                    <p class="text-sm font-medium ${feature.iconColor}">
+                        ${feature.value}
+                    </p>
+                </div>
+
+                <!-- Arrow indicator -->
+                <div class="arrow-indicator absolute bottom-4 right-4">
+                    <svg class="w-5 h-5 ${feature.iconColor}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </div>
+            `;
+
+            featuresGrid.appendChild(card);
+        });
+    </script>
+
+</body>
+</html>
